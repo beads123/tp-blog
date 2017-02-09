@@ -34,10 +34,14 @@
 				<h1 class="logo"> <a href="<?php echo U('Index/index');?>" title="异清轩技术博客 - POWERED BY WY ALL RIGHTS RESERVED"></a> </h1>
 				<ul class="nav hidden-xs-nav">
 					<li class="active"><a href="<?php echo U('Index/index');?>"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
-					<li><a href="<?php echo U('Blog/front');?>"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
-					<li><a href="<?php echo U('Blog/back');?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
+					<li><a href="<?php echo U('Blog/index',array('type'=>'front'));?>"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
+					<li><a href="<?php echo U('Blog/index',array('type'=>'back'));?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
 					<li><a href="<?php echo U('Blog/fabu');?>"><span class="glyphicon glyphicon-pencil"></span>写博客</a></li>
-					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
+					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-signal"></span>关于我们</a></li>
+					<?php if(!$isLogin): ?><li><a href="<?php echo U('User/index');?>"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
+					<?php else: ?>
+						<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+						<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>					
 				</ul>
 				<div class="feeds"> <a class="feed feed-xlweibo" href="" target="_blank"><i></i>新浪微博</a> <a class="feed feed-txweibo" href="" target="_blank"><i></i>腾讯微博</a> <a class="feed feed-rss" href="" target="_blank"><i></i>订阅本站</a> <a class="feed feed-weixin" data-toggle="popover" data-trigger="hover" title="微信扫一扫" data-html="true" data-content="<img src='images/weixin.jpg' alt=''>" href="javascript:;" target="_blank"><i></i>关注微信</a> </div>
 			</div>
@@ -49,9 +53,13 @@
 			<div id="header-xs-menu" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav header-xs-nav">
 					<li class="active"><a href="<?php echo U('Index/index');?>"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
-					<li><a href="<?php echo U('Blog/front');?>"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
-					<li><a href="<?php echo U('Blog/back');?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
+					<li><a href="<?php echo U('Blog/index',array('type'=>'front'));?>"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
+					<li><a href="<?php echo U('Blog/index',array('type'=>'back'));?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
 					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
+					<?php if(!$isLogin): ?><li><a href="<?php echo U('User/index');?>"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
+					<?php else: ?>
+						<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+						<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>			
 				</ul>
 				<form class="navbar-form" action="search.php" method="post" style="padding:0 25px;">
 					<div class="input-group">

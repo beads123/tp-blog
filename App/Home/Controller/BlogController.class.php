@@ -7,28 +7,18 @@ namespace Home\Controller;
 class BlogController extends CommonController{
 
 	/**
-	 * 显示博客
+	 * 显示个人博客
 	 */
 	public function index(){
-	 
-	}
-
-	/**
-	 * 前端技术
-	 * @return [type] [description]
-	 */
-	public function front(){
-		$this->assign('title','前端技术');
-		$this->display('index');
-	}
-
-	/**
-	 * 后端技术
-	 * @return [type] [description]
-	 */
-	public function back(){
-		$this->assign('title','后端技术');
-		$this->display('index');
+	 	if($_GET['type']=='front'){
+	 		$this->showNavbar('前端技术');
+	 	}
+	 	elseif($_GET['type']=='back'){
+	 		$this->showNavbar('后端技术');
+	 	}
+	 	else{
+	 		$this->showNavbar('个人博客');
+	 	}
 	}
 
 	/**
@@ -36,8 +26,7 @@ class BlogController extends CommonController{
 	 * @return [type] [description]
 	 */
 	public function fabu(){
-	    $this->assign('title','写博客');
-		$this->display('fabu');
+		$this->showNavbar('写博客');
 	}
 }
 

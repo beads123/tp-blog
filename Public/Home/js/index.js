@@ -26,7 +26,7 @@ $(function() {
 	var time=new GetTime();
 	$('#time').text(time.year+'年'+time.month+'月'+time.date+'日	'+time.weekday);
 
-
+	//滚动条的淡入淡出
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > 100) {
 			$(".gotop").fadeIn();
@@ -88,6 +88,7 @@ $(function() {
 	};
 	//启用页面元素智能定位
 	$("#search").smartFloat();
+	
 	//异步加载更多内容
 	$("#pagination a").on("click", function() {
 		var _url = $(this).attr("href");
@@ -119,4 +120,14 @@ $(function() {
 		return false;
 	});
 	
+	//登陆注册
+	$('.showModal').click(function(){
+		$('#myModal').modal('show');
+	});
+	$('#login').click(function(){
+		$(this).parent().prev().hide();
+	});
+	$('#reg').click(function(){
+		$(this).parent().prev().show();
+	});
 });
