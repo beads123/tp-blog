@@ -13,6 +13,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 html, body {
 	color: #444;
 	background-color: #EEE;
+	overflow: auto !important
 }
 body::-webkit-scrollbar {
  width:8px;
@@ -1138,3 +1139,5 @@ textarea::-webkit-scrollbar-thumb {
 .gotop:hover {
 	background: url(../images/backtop.png) no-repeat 0 -52px;
 }
+
+.modal{ overflow: auto !important;} 

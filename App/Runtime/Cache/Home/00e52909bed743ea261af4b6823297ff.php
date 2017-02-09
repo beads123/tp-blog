@@ -38,10 +38,10 @@
 					<li><a href="<?php echo U('Blog/index',array('type'=>'back'));?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
 					<li><a href="<?php echo U('Blog/fabu');?>"><span class="glyphicon glyphicon-pencil"></span>写博客</a></li>
 					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-signal"></span>关于我们</a></li>
-					<?php if(!$isLogin): ?><li><a href="<?php echo U('User/index');?>"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
+					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
 					<?php else: ?>
-						<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
-						<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>					
+					<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+					<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
 				</ul>
 				<div class="feeds"> <a class="feed feed-xlweibo" href="" target="_blank"><i></i>新浪微博</a> <a class="feed feed-txweibo" href="" target="_blank"><i></i>腾讯微博</a> <a class="feed feed-rss" href="" target="_blank"><i></i>订阅本站</a> <a class="feed feed-weixin" data-toggle="popover" data-trigger="hover" title="微信扫一扫" data-html="true" data-content="<img src='images/weixin.jpg' alt=''>" href="javascript:;" target="_blank"><i></i>关注微信</a> </div>
 			</div>
@@ -56,10 +56,10 @@
 					<li><a href="<?php echo U('Blog/index',array('type'=>'front'));?>"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
 					<li><a href="<?php echo U('Blog/index',array('type'=>'back'));?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
 					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
-					<?php if(!$isLogin): ?><li><a href="<?php echo U('User/index');?>"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
+					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
 					<?php else: ?>
-						<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
-						<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>			
+					<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+					<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
 				</ul>
 				<form class="navbar-form" action="search.php" method="post" style="padding:0 25px;">
 					<div class="input-group">
@@ -68,14 +68,14 @@
 							<button class="btn btn-default btn-search" type="submit">搜索</button>
 						</span>
 					</div>
-					</form>
-				</div>
+				</form>
 			</div>
-		</header>
-		<!--/超小屏幕可见-->
-		<div class="content-wrap"><!--内容-->
-		<div class="content">
-			﻿
+		</div>
+	</header>
+	<!--/超小屏幕可见-->
+	<div class="content-wrap"><!--内容-->
+	<div class="content">
+		﻿
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> <!--banner-->
 	<ol class="carousel-indicators">
@@ -242,44 +242,93 @@
 		<a href="">2</a><a href="">下一页</a><a href="">尾页</a>
 	</div>
 </div>
+	</div>
+</div>
+<!--/内容-->
+
+<!--模态框-登陆及注册-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title text-info" id="myModalLabel">欢迎来到书香阁博客</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" style="margin:10px" id="form">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-user"></span>
+							</div>
+							<input type="text" id="name" class="form-control"
+							placeholder="请输入用户名" required minlength="5"
+							maxlength="10">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-lock"></span>
+							</div>
+							<input type="password" id="password" class="form-control" placeholder="请输入密码" required minlength="5" maxlength="20">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-phone"></span>
+							</div>
+							<input type="text" name="phone" class="form-control" placeholder="请输入手机号" required minlength="11" maxlength="11">
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="button" id="login" class="btn btn-info">登陆</button>
+						<button type="button" id="reg" class="btn btn-info">注册</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+			</div>
 		</div>
 	</div>
-	<!--/内容-->
-	<aside class="sidebar visible-lg"><!--右侧>992px显示-->
-	<div class="sentence"> <strong>每日一句</strong>
-		<h2 id="time"></h2>
-		<p>你是我人生中唯一的主角，我却只能是你故事中的一晃而过得路人甲。</p>
+</div>
+<aside class="sidebar visible-lg"><!--右侧>992px显示-->
+<div class="sentence"> <strong>每日一句</strong>
+	<h2 id="time"></h2>
+	<p>你是我人生中唯一的主角，我却只能是你故事中的一晃而过得路人甲。</p>
+</div>
+<div id="search" class="sidebar-block search" role="search">
+	<h2 class="title"><strong>搜索</strong></h2>
+	<form class="navbar-form" action="search.php" method="post">
+		<div class="input-group">
+			<input type="text" class="form-control" size="35" placeholder="请输入关键字">
+			<span class="input-group-btn">
+				<button class="btn btn-default btn-search" type="submit">搜索</button>
+			</span> </div>
+		</form>
 	</div>
-	<div id="search" class="sidebar-block search" role="search">
-		<h2 class="title"><strong>搜索</strong></h2>
-		<form class="navbar-form" action="search.php" method="post">
-			<div class="input-group">
-				<input type="text" class="form-control" size="35" placeholder="请输入关键字">
-				<span class="input-group-btn">
-					<button class="btn btn-default btn-search" type="submit">搜索</button>
-				</span> </div>
-			</form>
-		</div>
-		<div class="sidebar-block recommend">
-			<h2 class="title"><strong>热门推荐</strong></h2>
-			<ul>
-				<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-				<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-				<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-				<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-				<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			</ul>
-		</div>
-		<div class="sidebar-block comment">
-			<h2 class="title"><strong>最新评论</strong></h2>
-			<ul>
-				<li data-toggle="tooltip" data-placement="top" title="站长的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-			欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-			<li data-toggle="tooltip" data-placement="top" title="读者墙上的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+	<div class="sidebar-block recommend">
+		<h2 class="title"><strong>热门推荐</strong></h2>
+		<ul>
+			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+		</ul>
+	</div>
+	<div class="sidebar-block comment">
+		<h2 class="title"><strong>最新评论</strong></h2>
+		<ul>
+			<li data-toggle="tooltip" data-placement="top" title="站长的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
 		欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-		<li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+		<li data-toggle="tooltip" data-placement="top" title="读者墙上的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
 	欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
 	<li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+<li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
 <li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
@@ -291,7 +340,6 @@
 </section>
 <div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
 <!--/返回顶部-->
-
 <script src="/Blog/Public/Home/js/nprogress.js" type="text/javascript" ></script>
 <script src="/Blog/Public/Home/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/Blog/Public/Home/js/index.js" type="text/javascript"></script>

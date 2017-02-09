@@ -124,10 +124,22 @@ $(function() {
 	$('.showModal').click(function(){
 		$('#myModal').modal('show');
 	});
-	$('#login').click(function(){
-		$(this).parent().prev().hide();
+	//登录注册按钮切换
+	$('#change').click(function(){
+		if($(this).attr('status')=='login'){
+			$(this).text('已有账号?立即登录').attr('status','reg').parent().prev().show();
+			$(this).prev('button').attr('status','reg').text('注册');
+		}else{
+			$(this).text('还没账号?立即注册').attr('status','login').parent().prev().hide();
+			$(this).prev('button').attr('status','login').text('登录');	
+		}	
 	});
-	$('#reg').click(function(){
-		$(this).parent().prev().show();
+	$('#btn').click(function(event) {
+		if($(this).attr('status')=='login'){
+			alert('登录验证');
+		}else{
+			alert('注册验证');
+		}
 	});
+
 });

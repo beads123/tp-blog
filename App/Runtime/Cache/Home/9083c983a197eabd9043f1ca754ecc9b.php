@@ -185,6 +185,9 @@
 			<div class="modal-body">
 				<form class="form-horizontal" style="margin:10px" id="form">
 					<div class="form-group">
+						<p class="alert alert-warning" id="showError">用户名不合法</p>
+					</div>
+					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
@@ -202,7 +205,7 @@
 							<input type="password" id="password" class="form-control" placeholder="请输入密码" required minlength="5" maxlength="20">
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="display:none">
 						<div class="input-group">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-phone"></span>
@@ -210,9 +213,9 @@
 							<input type="text" name="phone" class="form-control" placeholder="请输入手机号" required minlength="11" maxlength="11">
 						</div>
 					</div>
-					<div class="form-group">
-						<button type="button" id="login" class="btn btn-info">登陆</button>
-						<button type="button" id="reg" class="btn btn-info">注册</button>
+					<div class="form-group" style="margin-left:26px">
+						<button type="button" id="btn" status="login" class="btn btn-info">登陆</button>
+						<a href="javascript:void(0)" id="change" status="login">还没账号?立即注册</a>
 					</div>
 				</form>
 			</div>
