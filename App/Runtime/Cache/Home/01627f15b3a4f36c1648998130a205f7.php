@@ -27,7 +27,8 @@
 			};
 			var BLOG={
 				'regUrl':"<?php echo U('User/register');?>",
-				'loginUrl':"<?php echo U('User/login');?>"
+				'loginUrl':"<?php echo U('User/login');?>",
+				'fabuUrl':"<?php echo U('Blog/fabu');?>"
 			};
 		</script>
 	</head>
@@ -88,15 +89,13 @@
 		不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累
 	</p>
 	<form class="form-horizontal">
+		<textarea id="content" required></textarea><br/>
+		<input type="text" id="title" required class="form-control" placeholder="博客标题,必填"/><br/>
+		<input type="text" id="type" required class="form-control" placeholder="博客分类,必填,例如php,mysql,js。用逗号分隔"/>
+		<br/>
+	    <p class="alert alert-warning" id="blog-info" style="display:none"></p>
 		<div class="container">
-			<textarea id="content"></textarea><br/>
-		</div>
-		<div class="container">
-			<input type="text" id="title" class="form-control" placeholder="博客标题，必填"/><br/>
-			<input type="text" id="type" class="form-control" placeholder="博客分类，必填"/>
-		</div><br/>
-		<div class="container">
-			<button type="button" id="blog-btn" style="margin:12px" class="btn btn-info">发表博客</button>
+		 <button type="submit" id="blog-btn" style="margin:12px" class="btn btn-info">发表博客</button>
 		</div>
 	</form>
 </div>
@@ -104,10 +103,24 @@
 	UE.getEditor('content',{
 	'initialFrameWidth':'100%',
 	'initialFrameHeight':300,
-	'maximumWords':2000
+	'maximumWords':10000
 	});
 	$('#blog-btn').click(function() {
-		alert($('#content').val());
+		$(this).text('发表中...').get(0).disabled=true;
+		var data={
+			'title':$('#title').val(),
+			'content':$('#content').val(),
+			'type':$('#type').val()
+		};
+		$.post(BLOG.fabuUrl,data,function(res){
+			var result=$.parseJSON(res);
+			if(result.code==200){
+				$('#blog-info').text(result.message).removeClass('alert-warning').addClass('alert-success').show();							
+			}else{
+				$('#blog-info').text(result.message).removeClass('alert-success').addClass('alert-warning').show();
+			}
+			$('#blog-btn').text('发表博客').get(0).disabled=false;
+		});
 	});
 </script>
 	</div>
@@ -154,7 +167,7 @@
 						</div>
 					</div>
 					<div class="form-group" style="margin-left:26px">
-						<button type="button" id="btn" status="login" class="btn btn-info">登陆</button>
+						<button type="submit" id="btn" status="login" class="btn btn-info">登陆</button>
 						<a href="javascript:void(0)" id="change" status="login">还没账号?立即注册</a>
 					</div>
 				</form>

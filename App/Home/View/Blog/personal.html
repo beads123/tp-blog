@@ -1,0 +1,38 @@
+<layout name="layout/layout" />
+
+<div class="content-block new-content">
+	<h2 class="title"><strong>我的博客</strong></h2>
+	<div class="row">
+	  <volist name="data" id="item">
+		<div class="news-list">
+			<div class="news-img col-xs-5 col-sm-5 col-md-4">
+				 <a target="_blank" href="">
+				 	<img src="__PUBLIC__/Home/images/logo.jpg" alt=""> 
+				 </a> 
+			</div>
+			<div class="news-info col-xs-7 col-sm-7 col-md-8">
+				<dl>
+					<dt> <a href="" target="_blank" >{$item.title}</a> </dt>
+					<dd>
+						<span class="name">
+							<a href="" title="由{$item.username}发布" rel="author">{$item.username}</a>
+						</span> 
+						<span class="identity"></span> 
+						<span class="time"><?= date('Y-m-d',$item['time'])?></span>
+					</dd>
+					<dd class="text"><?= mb_substr(strip_tags($item['content']),0,135,'utf-8').'......'?></dd>
+				</dl>
+				<div class="news_bot col-sm-7 col-md-8">
+					 <span class="tags visible-lg visible-md">
+					 	 <a href="">本站</a> 
+					 	 <a href="">异清轩</a> 
+					 </span> 
+					 <span class="look"> 共 
+					 	<strong>{$item.see}</strong> 人围观，发现 
+					 </span>
+				 </div>
+			</div>
+		</div>
+	  </volist>
+	</div>
+</div>
