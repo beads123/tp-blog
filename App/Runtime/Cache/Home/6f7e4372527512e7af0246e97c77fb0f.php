@@ -83,18 +83,29 @@
 		
 
 <div class="content-block new-content">
+	<P class="alert alert-info">温馨提示：未通过审核的博客仅自己可见!</p>
 	<h2 class="title"><strong>我的博客</strong></h2>
 	<div class="row">
 	  <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><div class="news-list">
 			<div class="news-img col-xs-5 col-sm-5 col-md-4">
-				 <a target="_blank" href="">
+				 <a target="_blank" href="<?php echo U('detail',array('id'=>$item['id']));?>">
 				 	<img src="/Blog/Public/Home/images/logo.jpg" alt=""> 
 				 </a> 
 			</div>
 			<div class="news-info col-xs-7 col-sm-7 col-md-8">
 				<dl>
-					<dt> <a href="<?php echo U('detail',array('id'=>$item['id']));?>" target="_blank" >
-						<?php echo ($item["title"]); ?></a>
+					<dt>
+						<div class="row">
+						<div class="col-sm-9">
+							<a href="<?php echo U('detail',array('id'=>$item['id']));?>" target="_blank" >
+							<?php echo ($item["title"]); ?></a>
+						</div> 
+						<div class="col-sm-3">
+							<?php if($item['status']==0): ?><span class="btn-xs btn-info">未审核</span>
+							<?php else: ?>
+								<span class="btn-xs btn-success">已审核</span><?php endif; ?>
+						</div>
+						</div>
 				    </dt>
 					<dd>
 						<span class="name">

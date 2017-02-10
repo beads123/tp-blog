@@ -180,6 +180,7 @@
       </div>
       <script type="text/javascript">
   		(function(){
+
   			//赞
   			$('#zan').click(function(event) {
   				var blogId=$(this).attr('blogId');   //博客Id
@@ -199,6 +200,11 @@
   					});
   				}	
   			});
+
+        //浏览量加1
+        $.post("<?php echo U('Blog/see');?>",{"blogId":$('#zan').attr('blogId')},function(res){
+              console.log(res);
+        });
 
 
   		})();

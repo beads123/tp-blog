@@ -91,9 +91,9 @@
 </div>
 <div class="content-block contact-content">
     <h2 class="title"><strong>联系异清轩</strong></h2>
-    <p><span>站长QQ：</span><a href="tencent://message/?uin=1170461017\">117 046 1017</a></p>
+    <p><span>站长QQ：</span><a href="tencent://message/?uin=986992484\">986992484</a></p>
     <p><span>交流群：</span><a href="">36839755</a></p>
-    <p><span>站长信箱：</span><a href="mailto:admin@ylsat.com">admin@ylsat.com</a></p>
+    <p><span>站长信箱：</span><a href="mailto:986992484@qq.com">986992484@qq.com</a></p>
 </div>
 <div class="content-block comment">
   <h2 class="title"><strong>添加留言</strong></h2>

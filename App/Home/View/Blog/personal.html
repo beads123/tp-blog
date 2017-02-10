@@ -1,19 +1,32 @@
 <layout name="layout/layout" />
 
 <div class="content-block new-content">
+	<P class="alert alert-info">温馨提示：未通过审核的博客仅自己可见!</p>
 	<h2 class="title"><strong>我的博客</strong></h2>
 	<div class="row">
 	  <volist name="data" id="item">
 		<div class="news-list">
 			<div class="news-img col-xs-5 col-sm-5 col-md-4">
-				 <a target="_blank" href="">
+				 <a target="_blank" href="{:U('detail',array('id'=>$item['id']))}">
 				 	<img src="__PUBLIC__/Home/images/logo.jpg" alt=""> 
 				 </a> 
 			</div>
 			<div class="news-info col-xs-7 col-sm-7 col-md-8">
 				<dl>
-					<dt> <a href="{:U('detail',array('id'=>$item['id']))}" target="_blank" >
-						{$item.title}</a>
+					<dt>
+						<div class="row">
+						<div class="col-sm-9">
+							<a href="{:U('detail',array('id'=>$item['id']))}" target="_blank" >
+							{$item.title}</a>
+						</div> 
+						<div class="col-sm-3">
+							<if condition="$item['status']==0">
+								<span class="btn-xs btn-info">未审核</span>
+							<else/>
+								<span class="btn-xs btn-success">已审核</span>
+							</if>
+						</div>
+						</div>
 				    </dt>
 					<dd>
 						<span class="name">

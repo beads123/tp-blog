@@ -7,6 +7,17 @@ class IndexController extends CommonController{
 	 * 显示首页
 	 */
 	public function index(){
+
+		//最新博客
+		$Recent=D('Blog')->getRecentBlog();
+
+		//最热博客
+		$Hot=D('Blog')->getHotBlog();
+		
+		$this->assign(array(
+			'Recent'=>$Recent,
+			'Hot'=>$Hot
+		));
 		$this->showNavbar('书香阁');
 	}
 

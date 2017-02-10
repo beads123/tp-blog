@@ -71,6 +71,40 @@ HTML;
 			return $bool;
 		}
 	}
+
+	/**
+	 * 浏览量加1
+	 */
+	public function see($post){
+		$bool=$this->where(array('id'=>$post['blogId']))->setInc('see');
+		return $bool;
+	}
+
+	/**
+	 * 最新博客，首页显示
+	 * @return [type] [description]
+	 */
+	public function getRecentBlog(){
+		$data = $this->field('a.*,b.username')->alias('a')
+				->join('LEFT JOIN blog_user b ON a.user_id=b.id')
+				->where(array('a.status'=>1))
+				->order('time desc')
+				->select();
+		return $data;
+	}
+
+	/**
+	 * 最热博客，首页显示
+	 * @return [type] [description]
+	 */
+	public function getHotBlog(){
+		$data = $this->field('title,id')
+				->where(array('status'=>1))
+				->order('see desc')
+				->limit(3)
+				->select();
+		return $data;
+	}
 }
 
 

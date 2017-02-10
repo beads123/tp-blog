@@ -25,12 +25,18 @@ class BlogController extends CommonController{
 	public function fabu(){
 	  	if(IS_AJAX){
    			$model = D('Blog');
-   			if($model->create(I('post.'),1)){
+   			if($model->create(I('post.'))){
    				if($model->add()){
    					echo json_encode(array(
    						'code'=>200,
    						'message'=>'博客发布成功,需等待管理员通过验证'
    					));
+   					return;
+   				}else{
+   					echo json_encode(array(
+   						'code'=>500,
+   						'message'=>'服务器内部错误,请稍后再试'
+   					));		
    					return;
    				}
    			}
@@ -63,12 +69,22 @@ class BlogController extends CommonController{
 	}
 
 	/**
-	 * 点赞
+	 * AJAX点赞
 	 * @return [type] [description]
 	 */
 	public function zan(){
 		if(IS_AJAX){
 			echo D('Blog')->zan(I('post.'));
+		}
+	}
+
+	/**
+	 * AJAX设置浏览量
+	 * @return [type] [description]
+	 */
+	public function see(){
+		if(IS_AJAX){
+			echo D('Blog')->see(I('post.'));
 		}
 	}
 }
