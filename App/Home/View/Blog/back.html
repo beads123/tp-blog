@@ -1,8 +1,7 @@
 <layout name="layout/layout" />
 
 <div class="content-block new-content">
-	<P class="alert alert-info">温馨提示：未通过审核的博客仅自己可见!</p>
-	<h2 class="title"><strong>我的博客</strong></h2>
+	<h2 class="title"><strong>后端博客</strong></h2>
 	<div class="row">
 	  <if condition="$data">
 		  <volist name="data" id="item">
@@ -15,19 +14,8 @@
 				<div class="news-info col-xs-7 col-sm-7 col-md-8">
 					<dl>
 						<dt>
-							<div class="row">
-							<div class="col-sm-9">
-								<a href="{:U('detail',array('id'=>$item['id']))}" target="_blank" >
+							<a href="{:U('detail',array('id'=>$item['id']))}" target="_blank" >
 								{$item.title}</a>
-							</div> 
-							<div class="col-sm-3">
-								<if condition="$item['status']==0">
-									<span class="btn-xs btn-info">未审核</span>
-								<else/>
-									<span class="btn-xs btn-success">已审核</span>
-								</if>
-							</div>
-							</div>
 					    </dt>
 						<dd>
 							<span class="name">

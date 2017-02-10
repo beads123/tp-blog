@@ -9,7 +9,7 @@
 	<form class="form-horizontal">
 		<textarea id="content" required></textarea><br/>
 		<input type="text" id="title" required class="form-control" placeholder="博客标题,必填"/><br/>
-		<input type="text" id="type" required class="form-control" placeholder="博客分类,必填,例如php,mysql,js。用逗号分隔"/>
+		<input type="text" id="type" required class="form-control" placeholder="博客分类,必填,例如php,mysql,js。只能写一种"/>
 		<br/>
 	    <p class="alert alert-warning" id="blog-info" style="display:none"></p>
 		<div class="container">
@@ -21,9 +21,10 @@
 	UE.getEditor('content',{
 	'initialFrameWidth':'100%',
 	'initialFrameHeight':300,
-	'maximumWords':10000
+	'maximumWords':20000
 	});
 	$('#blog-btn').click(function() {
+		//可发送
 		$(this).text('发表中...').get(0).disabled=true;
 		var data={
 			'title':$('#title').val(),

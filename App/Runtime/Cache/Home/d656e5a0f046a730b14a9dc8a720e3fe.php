@@ -81,49 +81,45 @@
 	<div class="content-wrap"><!--内容-->
 	<div class="content">
 		
-<script type="text/javascript" src="/Blog/Public/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" src="/Blog/Public/ueditor/ueditor.all.min.js"></script>
-<script type="text/javascript" src="/Blog/Public/ueditor/lang/zh-cn/zh-cn.js"></script>
-<div>
-	<p class="alert alert-warning">
-		不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累
-	</p>
-	<form class="form-horizontal">
-		<textarea id="content" required></textarea><br/>
-		<input type="text" id="title" required class="form-control" placeholder="博客标题,必填"/><br/>
-		<input type="text" id="type" required class="form-control" placeholder="博客分类,必填,例如php,mysql,js。只能写一种"/>
-		<br/>
-	    <p class="alert alert-warning" id="blog-info" style="display:none"></p>
-		<div class="container">
-		 <button type="submit" id="blog-btn" style="margin:12px" class="btn btn-info">发表博客</button>
-		</div>
-	</form>
+
+<div class="content-block new-content">
+	<h2 class="title"><strong>后端博客</strong></h2>
+	<div class="row">
+	  <?php if($data): if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><div class="news-list">
+				<div class="news-img col-xs-5 col-sm-5 col-md-4">
+					 <a target="_blank" href="<?php echo U('detail',array('id'=>$item['id']));?>">
+					 	<img src="/Blog/Public/Home/images/img<?php echo ($key%5+1); ?>.jpg" alt=""> 
+					 </a> 
+				</div>
+				<div class="news-info col-xs-7 col-sm-7 col-md-8">
+					<dl>
+						<dt>
+							<a href="<?php echo U('detail',array('id'=>$item['id']));?>" target="_blank" >
+								<?php echo ($item["title"]); ?></a>
+					    </dt>
+						<dd>
+							<span class="name">
+								<a href="" title="由<?php echo ($item["username"]); ?>发布" rel="author"><?php echo ($item["username"]); ?></a>
+							</span> 
+							<span class="identity"></span> 
+							<span class="time"><?= date('Y-m-d',$item['time'])?></span>
+						</dd>
+						<dd class="text"><?= mb_substr(strip_tags($item['content']),0,135,'utf-8').'......'?></dd>
+					</dl>
+					<div class="news_bot col-sm-7 col-md-8">
+						 <span class="tags visible-lg visible-md">
+						 	 <button class="btn-xs btn-info"><?php echo ($item["type"]); ?></button> 
+						 </span> 
+						 <span class="look"> 共 
+						 	<strong><?php echo ($item["see"]); ?></strong> 人围观，发现 
+						 </span>
+					 </div>
+				</div>
+			</div><?php endforeach; endif; else: echo "" ;endif; ?>
+	  	<?php else: ?>
+			<p class="alert alert-warning">你还没有写博客喔!</p><?php endif; ?>
+	</div>
 </div>
-<script type="text/javascript">
-	UE.getEditor('content',{
-	'initialFrameWidth':'100%',
-	'initialFrameHeight':300,
-	'maximumWords':20000
-	});
-	$('#blog-btn').click(function() {
-		//可发送
-		$(this).text('发表中...').get(0).disabled=true;
-		var data={
-			'title':$('#title').val(),
-			'content':$('#content').val(),
-			'type':$('#type').val()
-		};
-		$.post(BLOG.fabuUrl,data,function(res){
-			var result=$.parseJSON(res);
-			if(result.code==200){
-				$('#blog-info').text(result.message).removeClass('alert-warning').addClass('alert-success').show();							
-			}else{
-				$('#blog-info').text(result.message).removeClass('alert-success').addClass('alert-warning').show();
-			}
-			$('#blog-btn').text('发表博客').get(0).disabled=false;
-		});
-	});
-</script>
 	</div>
 </div>
 <!--/内容-->

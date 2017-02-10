@@ -147,22 +147,29 @@
 </div>
 <div id="search" class="sidebar-block search" role="search">
 	<h2 class="title"><strong>搜索</strong></h2>
-	<form class="navbar-form" action="search.php" method="post">
+	<form class="navbar-form">
 		<div class="input-group">
 			<input type="text" class="form-control" size="35" placeholder="请输入关键字">
 			<span class="input-group-btn">
 				<button class="btn btn-default btn-search" type="submit">搜索</button>
-			</span> </div>
-		</form>
-	</div>
+			</span> 
+		</div>
+	</form>
+</div>
 	<div class="sidebar-block recommend">
 		<h2 class="title"><strong>热门推荐</strong></h2>
 		<ul>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="__PUBLIC__/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="__PUBLIC__/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="__PUBLIC__/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="__PUBLIC__/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="__PUBLIC__/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<volist name="Hot" id="item1">
+				<li>
+					<a target="_blank" href="{:U('Blog/detail',array('id'=>$item1['id']))}">
+					<span class="thumb">
+					 	<img src="__PUBLIC__/Home/images/img{$key+1}.jpg" alt="">
+					 </span> 
+					 <span class="text">{$item1.title}</span> 
+					 <span class="text-muted">阅读({$item1.see})</span>
+					</a>
+				</li>
+			</volist>
 		</ul>
 	</div>
 	<div class="sidebar-block comment">

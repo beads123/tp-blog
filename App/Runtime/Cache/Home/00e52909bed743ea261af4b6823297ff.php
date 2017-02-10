@@ -89,13 +89,13 @@
 		<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 	</ol>
 	<div class="carousel-inner" role="listbox">
-		<div class="item active"> <a href="content.html" target="_blank"><img src="/Blog/Public/Home/images/img1.jpg" alt="" /></a>
+		<div class="item active"> <a href="<?php echo U('Index/index');?>"><img src="/Blog/Public/Home/images/header1.jpg" alt="" /></a>
 		<div class="carousel-caption"> 欢迎来到书香阁技术博客，在这里可以看到网站前端和后端的技术等 </div>
 		<span class="carousel-bg"></span> </div>
-		<div class="item"> <a href="content.html" target="_blank"><img src="/Blog/Public/Home/images/img2.jpg" alt="" /></a>
+		<div class="item"> <a href="<?php echo U('Index/index');?>"><img src="/Blog/Public/Home/images/header2.jpg" alt="" /></a>
 		<div class="carousel-caption"> 欢迎来到书香阁技术博客，在这里可以看到网站前端和后端的技术等 </div>
 		<span class="carousel-bg"></span> </div>
-		<div class="item"> <a href="content.html" target="_blank"><img src="/Blog/Public/Home/images/img3.jpg" alt="" /></a>
+		<div class="item"> <a href="<?php echo U('Index/index');?>"><img src="/Blog/Public/Home/images/header3.jpg" alt="" /></a>
 		<div class="carousel-caption"> 欢迎来到书香阁技术博客，在这里可以看到网站前端和后端的技术等 </div>
 		<span class="carousel-bg"></span> </div>
 	</div>
@@ -107,7 +107,7 @@
 	<h2 class="title"><strong>本周热门排行</strong></h2>
 	<ul>
 		<?php if(is_array($Hot)): $i = 0; $__LIST__ = $Hot;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item1): $mod = ($i % 2 );++$i;?><li class="<?php echo ($key==0?'large':''); ?>">
-				<a href="<?php echo U('Blog/detail',array('id'=>$item['id']));?>" target="_blank">
+				<a href="<?php echo U('Blog/detail',array('id'=>$item1['id']));?>" target="_blank">
 					<img src="/Blog/Public/Home/images/img<?php echo ($key+1); ?>.jpg" alt="">
 					<h3><?php echo ($item1["title"]); ?></h3>
 				</a>
@@ -121,7 +121,7 @@
 		<?php if(is_array($Recent)): $i = 0; $__LIST__ = $Recent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><div class="news-list">
 				<div class="news-img col-xs-5 col-sm-5 col-md-4"> 
 					<a target="_blank" href="<?php echo U('Blog/detail',array('id'=>$item['id']));?>">
-					   <img src="/Blog/Public/Home/images/logo.jpg" alt=""> 
+					   <img src="/Blog/Public/Home/images/img<?php echo ($key%5+1); ?>.jpg" style="height:140px" alt=""> 
 					</a>  
 				</div>
 				<div class="news-info col-xs-7 col-sm-7 col-md-8">
@@ -224,22 +224,27 @@
 </div>
 <div id="search" class="sidebar-block search" role="search">
 	<h2 class="title"><strong>搜索</strong></h2>
-	<form class="navbar-form" action="search.php" method="post">
+	<form class="navbar-form">
 		<div class="input-group">
 			<input type="text" class="form-control" size="35" placeholder="请输入关键字">
 			<span class="input-group-btn">
 				<button class="btn btn-default btn-search" type="submit">搜索</button>
-			</span> </div>
-		</form>
-	</div>
+			</span> 
+		</div>
+	</form>
+</div>
 	<div class="sidebar-block recommend">
 		<h2 class="title"><strong>热门推荐</strong></h2>
 		<ul>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<?php if(is_array($Hot)): $i = 0; $__LIST__ = $Hot;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item1): $mod = ($i % 2 );++$i;?><li>
+					<a target="_blank" href="<?php echo U('Blog/detail',array('id'=>$item1['id']));?>">
+					<span class="thumb">
+					 	<img src="/Blog/Public/Home/images/img<?php echo ($key+1); ?>.jpg" alt="">
+					 </span> 
+					 <span class="text"><?php echo ($item1["title"]); ?></span> 
+					 <span class="text-muted">阅读(<?php echo ($item1["see"]); ?>)</span>
+					</a>
+				</li><?php endforeach; endif; else: echo "" ;endif; ?>
 		</ul>
 	</div>
 	<div class="sidebar-block comment">

@@ -7,14 +7,18 @@ namespace Home\Controller;
 class BlogController extends CommonController{
 
 	/**
-	 * 显示个人博客
+	 * 显示博客
 	 */
 	public function index(){
 	 	if($_GET['type']=='front'){
-	 		$this->showNavbar('前端技术');
+	 		$data=D('Blog')->getFront();
+	 		$this->assign('data',$data);
+	 		$this->showNavbar('前端技术','front');
 	 	}
 	 	elseif($_GET['type']=='back'){
-	 		$this->showNavbar('后端技术');
+	 		$data=D('Blog')->getBack();
+	 		$this->assign('data',$data);
+	 		$this->showNavbar('后端技术','back');
 	 	}
 	}
 
@@ -25,7 +29,7 @@ class BlogController extends CommonController{
 	public function fabu(){
 	  	if(IS_AJAX){
    			$model = D('Blog');
-   			if($model->create(I('post.'))){
+   			if($model->create($_POST,3)){
    				if($model->add()){
    					echo json_encode(array(
    						'code'=>200,
@@ -35,7 +39,7 @@ class BlogController extends CommonController{
    				}else{
    					echo json_encode(array(
    						'code'=>500,
-   						'message'=>'服务器内部错误,请稍后再试'
+   						'message'=>$model->getError()
    					));		
    					return;
    				}

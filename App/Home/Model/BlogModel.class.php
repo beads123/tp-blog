@@ -5,8 +5,8 @@ class BlogModel extends Model {
 
 	//写入时验证
 	protected $_validate = array(
-		array('title','require','标题不能为空',1,'regex',3),
 		array('content','require','博客内容不能为空',1,'regex',3),
+		array('title','require','标题不能为空',1,'regex',3),
 		array('type','require','博客类型不能为空',1,'regex',3)
 	);
 
@@ -16,8 +16,17 @@ class BlogModel extends Model {
 	protected function _before_insert(&$data, $option){
 		//发布者id
 		$data['user_id'] = session('uid');
-		//发布时间
-		$data['time'] =time();
+		$blog=$this->field('title')
+				   ->where(array('title'=>$data['title'],'type'=>$data['type']))
+				   ->find();
+		if(!$blog){
+			//发布时间
+			$data['time'] =time();
+			return true;
+		}else{
+			$this->error='该博客已经存在';
+			return false;	
+		}
 	}
 
 	/**
@@ -33,12 +42,44 @@ HTML;
 	}
 
 	/**
-	 * 得到个人所有博客
+	 * 个人所有博客
 	 */
 	public function getPersonal(){
 		$data = $this->field('a.*,b.username')->alias('a')
 				->join('LEFT JOIN blog_user b ON a.user_id=b.id')
 				->where(array('a.user_id'=>session('uid')))
+				->select();
+		return $data;
+	}
+
+	/**
+	 * 前端博客
+	 */
+	public function getFront(){
+		$map=array(
+			'status'=>array('eq',1),
+			'type'=>array('in','js,js-php,jq,ajax,AngularJS,bootstrap,javascript,nodejs,vuejs')
+		);
+		$data = $this->field('a.*,b.username')->alias('a')
+				->join('LEFT JOIN blog_user b ON a.user_id=b.id')
+				->where($map)
+				->order('see desc')
+				->select();
+		return $data;
+	}
+
+	/**
+	 * 后端博客
+	 */
+	public function getBack(){
+		$map=array(
+			'status'=>array('eq',1),
+			'type'=>array('in','php,mysql,linux,shell,memcache,redis')
+		);
+		$data = $this->field('a.*,b.username')->alias('a')
+				->join('LEFT JOIN blog_user b ON a.user_id=b.id')
+				->where(array('a.status'=>1))
+				->where($map)
 				->select();
 		return $data;
 	}
@@ -98,10 +139,10 @@ HTML;
 	 * @return [type] [description]
 	 */
 	public function getHotBlog(){
-		$data = $this->field('title,id')
+		$data = $this->field('title,id,see')
 				->where(array('status'=>1))
 				->order('see desc')
-				->limit(3)
+				->limit(5)
 				->select();
 		return $data;
 	}

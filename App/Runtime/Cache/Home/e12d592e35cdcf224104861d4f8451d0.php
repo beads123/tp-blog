@@ -282,11 +282,15 @@
 	<div class="sidebar-block recommend">
 		<h2 class="title"><strong>热门推荐</strong></h2>
 		<ul>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<?php if(is_array($Hot)): $i = 0; $__LIST__ = $Hot;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item1): $mod = ($i % 2 );++$i;?><li>
+					<a target="_blank" href="<?php echo U('Blog/detail',array('id'=>$item1['id']));?>">
+					<span class="thumb">
+					 	<img src="/Blog/Public/Home/images/img<?php echo ($key+1); ?>.jpg" alt="">
+					 </span> 
+					 <span class="text"><?php echo ($item1["title"]); ?></span> 
+					 <span class="text-muted">阅读(<?php echo ($item1["see"]); ?>)</span>
+					</a>
+				</li><?php endforeach; endif; else: echo "" ;endif; ?>
 		</ul>
 	</div>
 	<div class="sidebar-block comment">
