@@ -12,7 +12,9 @@
 			</div>
 			<div class="news-info col-xs-7 col-sm-7 col-md-8">
 				<dl>
-					<dt> <a href="" target="_blank" >{$item.title}</a> </dt>
+					<dt> <a href="{:U('detail',array('id'=>$item['id']))}" target="_blank" >
+						{$item.title}</a>
+				    </dt>
 					<dd>
 						<span class="name">
 							<a href="" title="由{$item.username}发布" rel="author">{$item.username}</a>

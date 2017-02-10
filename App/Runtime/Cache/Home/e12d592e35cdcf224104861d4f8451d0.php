@@ -81,60 +81,128 @@
 	<div class="content-wrap"><!--内容-->
 	<div class="content">
 		
-
-<div class="content-block about-content">
-    <h2 class="title"><strong>关于异清轩</strong></h2>
-    <p class="line-title">想要深入了解<span>异清轩？</span></p>
-    <p>异清轩技术博客的   内容大概为网站前端和后端的技术，包括内容管理系统，文章内容有我自己的原创，也有其他网站转载过来的精品，如果我遇到好的资源会第一时间发布在本博客内。</p>
-    <p>大家如果有好的文章好的技术请不要吝啬，欢迎前来投稿！</p>
-    <p>如果有什么疑问或者需要投稿的请使用下方联系方式，或者留言来告诉我，收到后第一时间回复。</p>
-</div>
-<div class="content-block contact-content">
-    <h2 class="title"><strong>联系异清轩</strong></h2>
-    <p><span>站长QQ：</span><a href="tencent://message/?uin=1170461017\">117 046 1017</a></p>
-    <p><span>交流群：</span><a href="">36839755</a></p>
-    <p><span>站长信箱：</span><a href="mailto:admin@ylsat.com">admin@ylsat.com</a></p>
-</div>
-<div class="content-block comment">
-  <h2 class="title"><strong>添加留言</strong></h2>
-  <form action="message.php" method="post" class="form-inline" id="comment-form">
-    <div class="comment-title">
-      <div class="form-group">
-        <label for="messageName">姓名：</label>
-        <input type="text" name="messageName" class="form-control" id="messageName" placeholder="异清轩">
+     <header class="news_header">
+        <h2><?php echo ($blogData["title"]); ?></h2>
+        <ul>
+          <li><?php echo ($blogData["username"]); ?> 发布于 <?= date('Y-m-d',$blogData['time'])?></li>
+          <li>类型：<a href="" title="" target="_blank"><?php echo ($blogData["type"]); ?></a></li>
+          <li>共 <strong><?php echo ($blogData["see"]); ?></strong> 人围观 </li>
+        </ul>
+      </header>
+      <article class="news_content"><?php echo ($blogData["content"]); ?></article>
+      <div class="reprint">转载请说明出处：
+      	<a href="" title="" target="_blank">异清轩技术博客</a> » 
+      	<a href="" title="" target="_blank">欢迎来到异清轩技术博客</a>
       </div>
-      <div class="form-group">
-        <label for="messageEmail">邮箱：</label>
-        <input type="email" name="messageEmail" class="form-control" id="messageEmail" placeholder="admin@ylsat.com">
+      <div class="zambia">
+      	<a href="javascript:void(0);" id="zan" blogId="<?php echo ($blogData["id"]); ?>" status="1">
+      		<span class="glyphicon glyphicon-thumbs-up"></span>
+      		赞(<strong><?php echo ($blogData["zan"]); ?></strong>)	 
+      	</a>
       </div>
-    </div>
-    <div class="comment-form">
-      <textarea placeholder="在此处填写留言内容" name="messageContent"></textarea>
-      <div class="comment-form-footer">
-        <div class="comment-form-text">请先 <a href="javascript:;">登录</a> 或 <a href="javascript:;">注册</a>，也可匿名留言 </div>
-        <div class="comment-form-btn">
-          <button type="submit" class="btn btn-default btn-comment">提交留言</button>
+      <div class="tags news_tags">标签： 
+      	<span data-toggle="tooltip" data-placement="bottom" title="查看关于 本站 的文章">
+      		<a href="">本站</a></span> 
+      	<span data-toggle="tooltip" data-placement="bottom" title="查看关于 异清轩 的文章"><a href="">异清轩</a></span> 
+      </div>
+      <nav class="page-nav"> 
+      	<span class="page-nav-prev">上一篇<br />
+        	<a href="" rel="prev">欢迎来到异清轩技术博客</a></span> 
+        <span class="page-nav-next">下一篇<br />
+        	<a href="" rel="next">欢迎来到异清轩技术博客</a></span> 
+      </nav>
+      <div class="content-block related-content visible-lg visible-md">
+        <h2 class="title"><strong>相关推荐</strong></h2>
+        <ul>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/logo.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/img1.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/img3.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/img2.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/img2.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/img3.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客,在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/img1.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+          <li><a target="_blank" href=""><img src="/Blog/Public/Home/images/logo.jpg" alt="">
+            <h3> 欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 </h3>
+            </a></li>
+        </ul>
+      </div>
+      <div class="content-block comment">
+        <h2 class="title"><strong>评论</strong></h2>
+        <form action="comment.php" method="post" class="form-inline" id="comment-form">
+          <div class="comment-title">
+            <div class="form-group">
+              <label for="commentName">昵称：</label>
+              <input type="text" name="commentName" class="form-control" id="commentName" placeholder="异清轩">
+            </div>
+            <div class="form-group">
+              <label for="commentEmail">邮箱：</label>
+              <input type="email" name="commentEmail" class="form-control" id="commentEmail" placeholder="admin@ylsat.com">
+            </div>
+          </div>
+          <div class="comment-form">
+            <textarea placeholder="你的评论可以一针见血" name="commentContent"></textarea>
+            <div class="comment-form-footer">
+              <div class="comment-form-text">请先 <a href="javascript:;">登录</a> 或 <a href="javascript:;">注册</a>，也可匿名评论 </div>
+              <div class="comment-form-btn">
+                <button type="submit" class="btn btn-default btn-comment">提交评论</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="comment-content">
+          <ul>
+            <li><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+            <li><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩编辑</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
+            <li><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>令狐冲</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+            <li><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>任盈盈</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
+            <li><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
+              欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </form>
-  <div class="content-block comment-content">
-    <h2 class="title"><strong>最新留言</strong></h2>
-    <ul>
-      <li><span class="text"><strong>异清轩站长</strong> (2015-10-18) 留言：<br />
-      欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-      <li><span class="text"><strong>异清轩编辑</strong> (2015-10-18) 留言：<br />
-      欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
-      <li><span class="text"><strong>令狐冲</strong> (2015-10-18) 留言：<br />
-      欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-      <li><span class="text"><strong>任盈盈</strong> (2015-10-18) 留言：<br />
-      欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等在这里可以看到网站前端和后端的技术等 ...</span></li>
-      <li><span class="text"><strong>异清轩站长</strong> (2015-10-18) 留言：<br />
-      欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></li>
-    </ul>
-  </div>
-</div>
-<!--/内容-->
+      <script type="text/javascript">
+  		(function(){
+  			//赞
+  			$('#zan').click(function(event) {
+  				var blogId=$(this).attr('blogId');   //博客Id
+  				var zan=parseInt($(this).find('strong').text()); //得到赞数
+  				if($(this).attr('status')==1){
+  					$(this).attr('status',0).find('strong').text(zan+1);
+  					$.post("<?php echo U('Blog/zan');?>",{"blogId":blogId,"status":1},
+  						function(res){
+  						console.log(res);
+  					});
+  				}
+  				else{
+  					$(this).attr('status',1).find('strong').text(zan-1);
+  					$.post("<?php echo U('Blog/zan');?>",{"blogId":blogId,"status":0},
+  						function(res){
+  						console.log(res);
+  					});
+  				}	
+  			});
+
+
+  		})();
+      </script>
 	</div>
 </div>
 <!--/内容-->

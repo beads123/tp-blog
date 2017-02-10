@@ -33,7 +33,7 @@ HTML;
 	}
 
 	/**
-	 * 得到个人博客
+	 * 得到个人所有博客
 	 */
 	public function getPersonal(){
 		$data = $this->field('a.*,b.username')->alias('a')
@@ -41,6 +41,35 @@ HTML;
 				->where(array('a.user_id'=>session('uid')))
 				->select();
 		return $data;
+	}
+
+	/**
+	 * 博客详情
+	 * @param  int $id 博客id
+	 * @return array
+	 */
+	public function blogDetail($id){
+		$data = $this->field('a.*,b.username')->alias('a')
+				->join('LEFT JOIN blog_user b ON a.user_id=b.id')
+				->where(array('a.user_id'=>session('uid'),'a.id'=>$id))
+				->find();
+		return $data;
+	}
+
+	/**
+	 * 点赞
+	 */
+	public function zan($post){
+		//加赞
+		if($post['status']==1){
+			$bool=$this->where(array('id'=>$post['blogId']))->setInc('zan');
+			return $bool;
+		}
+		//减赞
+		else{
+			$bool=$this->where(array('id'=>$post['blogId']))->setDec('zan');
+			return $bool;
+		}
 	}
 }
 

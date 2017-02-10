@@ -93,7 +93,9 @@
 			</div>
 			<div class="news-info col-xs-7 col-sm-7 col-md-8">
 				<dl>
-					<dt> <a href="" target="_blank" ><?php echo ($item["title"]); ?></a> </dt>
+					<dt> <a href="<?php echo U('detail',array('id'=>$item['id']));?>" target="_blank" >
+						<?php echo ($item["title"]); ?></a>
+				    </dt>
 					<dd>
 						<span class="name">
 							<a href="" title="由<?php echo ($item["username"]); ?>发布" rel="author"><?php echo ($item["username"]); ?></a>

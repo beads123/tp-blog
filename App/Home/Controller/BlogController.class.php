@@ -44,12 +44,32 @@ class BlogController extends CommonController{
 	}
 
 	/**
-	 * 显示个人博客
+	 * 显示个人所有博客
 	 */
 	public function personal(){
 		$data=D('Blog')->getPersonal();
 		$this->assign('data',$data);
 	 	$this->showNavbar('我的博客');
+	}
+
+	/**
+	 * 博客详情
+	 * @return [type] [description]
+	 */
+	public function detail(){
+		$blogData=D('Blog')->blogDetail(intval($_GET['id']));
+		$this->assign('blogData',$blogData);
+	 	$this->showNavbar('博客详情');	
+	}
+
+	/**
+	 * 点赞
+	 * @return [type] [description]
+	 */
+	public function zan(){
+		if(IS_AJAX){
+			echo D('Blog')->zan(I('post.'));
+		}
 	}
 }
 

@@ -45,7 +45,7 @@
 					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-signal"></span>关于我们</a></li>
 					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
 					<?php else: ?>
-					<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+					<li><a href="<?php echo U('Blog/personal');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
 					<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
 				</ul>
 				<div class="feeds"> <a class="feed feed-xlweibo" href="" target="_blank"><i></i>新浪微博</a> <a class="feed feed-txweibo" href="" target="_blank"><i></i>腾讯微博</a> <a class="feed feed-rss" href="" target="_blank"><i></i>订阅本站</a> <a class="feed feed-weixin" data-toggle="popover" data-trigger="hover" title="微信扫一扫" data-html="true" data-content="<img src='images/weixin.jpg' alt=''>" href="javascript:;" target="_blank"><i></i>关注微信</a> </div>
@@ -63,7 +63,7 @@
 					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
 					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
 					<?php else: ?>
-					<li><a href="<?php echo U('Blog/index');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+					<li><a href="<?php echo U('Blog/personal');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
 					<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
 				</ul>
 				<form class="navbar-form" action="search.php" method="post" style="padding:0 25px;">
