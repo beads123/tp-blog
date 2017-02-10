@@ -120,6 +120,7 @@ $(function() {
 		return false;
 	});
 	
+
 	//登陆注册
 	$('.showModal').click(function(){
 		$('#myModal').modal('show');
@@ -135,11 +136,46 @@ $(function() {
 		}	
 	});
 	$('#btn').click(function(event) {
+		//登陆验证
 		if($(this).attr('status')=='login'){
-			alert('登录验证');
-		}else{
-			alert('注册验证');
+			$(this).text('登陆中...').get(0).disabled=true;
+		    var data={
+				'username':$('#username').val(),
+				'password':$('#password').val(),
+			};
+			$.post(BLOG.loginUrl,data,function(res){
+				var result=$.parseJSON(res);
+				if(result.code==200){
+					$('#showError').text(result.message).removeClass('alert-warning').addClass('alert-success').show();
+					setTimeout(function(){
+						location.reload();
+					},1000);				
+				}else{
+					$('#showError').text(result.message).removeClass('alert-success').addClass('alert-warning').show();
+				}
+				$('#btn').text('登陆').get(0).disabled=false;
+			});
+
+		}else{ 
+		    //注册验证
+		    $(this).text('注册中...').get(0).disabled=true;
+			var data={
+				'username':$('#username').val(),
+				'password':$('#password').val(),
+				'email':$('#email').val()
+			};
+			$.post(BLOG.regUrl,data,function(res){
+			    var result=$.parseJSON(res);
+				if(result.code==200){
+					$('#showError').text(result.message).removeClass('alert-warning').addClass('alert-success').show();
+				}else{
+					$('#showError').text(result.message).removeClass('alert-success').addClass('alert-warning').show();
+				}
+				$('#btn').text('注册').get(0).disabled=false;
+			});
 		}
 	});
+
+
 
 });

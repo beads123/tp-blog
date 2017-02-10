@@ -24,7 +24,11 @@
 				if (!window.applicationCache) {
 					window.location.href="<?php echo U('Index/ie');?>";
 				}
-			}
+			};
+			var BLOG={
+				'regUrl':"<?php echo U('User/register');?>",
+				'loginUrl':"<?php echo U('User/login');?>"
+			};
 		</script>
 	</head>
 	<body>
@@ -257,11 +261,14 @@
 			<div class="modal-body">
 				<form class="form-horizontal" style="margin:10px" id="form">
 					<div class="form-group">
+						<p class="alert alert-warning" style="display:none" id="showError">用户名不合法</p>
+					</div>
+					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" id="name" class="form-control"
+							<input type="text" id="username" class="form-control"
 							placeholder="请输入用户名" required minlength="5"
 							maxlength="10">
 						</div>
@@ -274,17 +281,17 @@
 							<input type="password" id="password" class="form-control" placeholder="请输入密码" required minlength="5" maxlength="20">
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group" style="display:none">
 						<div class="input-group">
 							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-phone"></span>
+								<span class="glyphicon glyphicon-send"></span>
 							</div>
-							<input type="text" name="phone" class="form-control" placeholder="请输入手机号" required minlength="11" maxlength="11">
+							<input type="text" id="email" class="form-control" placeholder="请输入邮箱" required>
 						</div>
 					</div>
-					<div class="form-group">
-						<button type="button" id="login" class="btn btn-info">登陆</button>
-						<button type="button" id="reg" class="btn btn-info">注册</button>
+					<div class="form-group" style="margin-left:26px">
+						<button type="button" id="btn" status="login" class="btn btn-info">登陆</button>
+						<a href="javascript:void(0)" id="change" status="login">还没账号?立即注册</a>
 					</div>
 				</form>
 			</div>

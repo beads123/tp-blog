@@ -15,7 +15,7 @@ class CommonController extends \Think\Controller{
 	protected function showNavbar($title,$name=''){
 		$this->assign(array(
 			'title'=>$title,
-			'isLogin'=>false
+			'isLogin'=>session('isLogin')
 		));
 		$this->display($name);
 	}

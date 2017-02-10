@@ -1,7 +1,7 @@
 <?php
 return array(
 	//设置可访问目录
-	'MODULE_ALLOW_LIST'=>array('Home','Admin','Gii'),
+	'MODULE_ALLOW_LIST'=>array('Home','Admin'),
 	//设置默认目录
 	'DEFAULT_MODULE'=>'Home',
 	//数据库配置
@@ -10,8 +10,8 @@ return array(
 	'DB_PORT'=>'3306',
 	'DB_USER'=>'root',
 	'DB_PWD'=>'',
-	'DB_NAME'=>'ecshop',
-	'DB_PREFIX'=>'ecshop_',
+	'DB_NAME'=>'blog',
+	'DB_PREFIX'=>'blog_',
 	//URL模式
 	'URL_MODEL'=>2,   //url重写模式
 	/*图片相关的配置*/

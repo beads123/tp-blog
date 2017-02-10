@@ -24,7 +24,11 @@
 				if (!window.applicationCache) {
 					window.location.href="<?php echo U('Index/ie');?>";
 				}
-			}
+			};
+			var BLOG={
+				'regUrl':"<?php echo U('User/register');?>",
+				'loginUrl':"<?php echo U('User/login');?>"
+			};
 		</script>
 	</head>
 	<body>
@@ -145,14 +149,14 @@
 			<div class="modal-body">
 				<form class="form-horizontal" style="margin:10px" id="form">
 					<div class="form-group">
-						<p class="alert alert-warning" id="showError">用户名不合法</p>
+						<p class="alert alert-warning" style="display:none" id="showError">用户名不合法</p>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" id="name" class="form-control"
+							<input type="text" id="username" class="form-control"
 							placeholder="请输入用户名" required minlength="5"
 							maxlength="10">
 						</div>
@@ -168,9 +172,9 @@
 					<div class="form-group" style="display:none">
 						<div class="input-group">
 							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-phone"></span>
+								<span class="glyphicon glyphicon-send"></span>
 							</div>
-							<input type="text" name="phone" class="form-control" placeholder="请输入手机号" required minlength="11" maxlength="11">
+							<input type="text" id="email" class="form-control" placeholder="请输入邮箱" required>
 						</div>
 					</div>
 					<div class="form-group" style="margin-left:26px">

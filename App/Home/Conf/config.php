@@ -16,16 +16,11 @@ return array(
 		 //{id|goodsdir} 是目录名称，调用了goodsdir函数，|前的是参数，把id当成参数
 	 ),
     /********* MD5时用来复杂化的 ****************/
-	'MD5_KEY' => 'www.ecshop.com',
+	'MD5_KEY' => 'blog.lenshen.com',
 	/************** 发邮件的配置 ***************/
 	'MAIL_ADDRESS' => 'm18296764976_1@163.com',   // 发货人的email
-	'MAIL_FROM' => 'ECshop官方',      // 发货人姓名
+	'MAIL_FROM' => '书香阁博客',      // 发货人姓名
 	'MAIL_SMTP' => 'smtp.163.com',      // 邮件服务器的地址
 	'MAIL_LOGINNAME' => 'm18296764976_1',   
 	'MAIL_PASSWORD' => 'kiss12345'
 );
-
-//每一百件商品放到一个目录里
-function goodsdir($id){
-	return ceil($id/100);
-}

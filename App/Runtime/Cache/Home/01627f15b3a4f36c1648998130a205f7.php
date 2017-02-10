@@ -24,7 +24,11 @@
 				if (!window.applicationCache) {
 					window.location.href="<?php echo U('Index/ie');?>";
 				}
-			}
+			};
+			var BLOG={
+				'regUrl':"<?php echo U('User/register');?>",
+				'loginUrl':"<?php echo U('User/login');?>"
+			};
 		</script>
 	</head>
 	<body>
@@ -76,33 +80,36 @@
 	<div class="content-wrap"><!--内容-->
 	<div class="content">
 		
-	<script type="text/javascript" src="/Blog/Public/ueditor/ueditor.config.js"></script>
-	<script type="text/javascript" src="/Blog/Public/ueditor/ueditor.all.min.js"></script>
-	<script type="text/javascript" src="/Blog/Public/ueditor/lang/zh-cn/zh-cn.js"></script>
-
-	<div>
-		<p class="alert alert-warning">
-			不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累
-		</p>
-		<form class="form-horizontal">
+<script type="text/javascript" src="/Blog/Public/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/Blog/Public/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="/Blog/Public/ueditor/lang/zh-cn/zh-cn.js"></script>
+<div>
+	<p class="alert alert-warning">
+		不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累
+	</p>
+	<form class="form-horizontal">
+		<div class="container">
 			<textarea id="content"></textarea><br/>
-			<div class="col-sm-9">
-				<input type="text" id="username" class="form-control" placeholder="你的昵称，必填"/>
-			</div><br/><br/>
-			<button type="button" id="btn" style="margin:12px" class="btn btn-info">发表博客</button>
-		</form>
-	</div>
-
-	<script type="text/javascript">
-		UE.getEditor('content',{
-		'initialFrameWidth':'100%',
-		'initialFrameHeight':300,
-		'maximumWords':2000
-		});
-		$('#btn').click(function() {
-			alert($('#content').val());
-	    });
-	</script>
+		</div>
+		<div class="container">
+			<input type="text" id="title" class="form-control" placeholder="博客标题，必填"/><br/>
+			<input type="text" id="type" class="form-control" placeholder="博客分类，必填"/>
+		</div><br/>
+		<div class="container">
+			<button type="button" id="blog-btn" style="margin:12px" class="btn btn-info">发表博客</button>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	UE.getEditor('content',{
+	'initialFrameWidth':'100%',
+	'initialFrameHeight':300,
+	'maximumWords':2000
+	});
+	$('#blog-btn').click(function() {
+		alert($('#content').val());
+	});
+</script>
 	</div>
 </div>
 <!--/内容-->
@@ -118,14 +125,14 @@
 			<div class="modal-body">
 				<form class="form-horizontal" style="margin:10px" id="form">
 					<div class="form-group">
-						<p class="alert alert-warning" id="showError">用户名不合法</p>
+						<p class="alert alert-warning" style="display:none" id="showError">用户名不合法</p>
 					</div>
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-user"></span>
 							</div>
-							<input type="text" id="name" class="form-control"
+							<input type="text" id="username" class="form-control"
 							placeholder="请输入用户名" required minlength="5"
 							maxlength="10">
 						</div>
@@ -141,9 +148,9 @@
 					<div class="form-group" style="display:none">
 						<div class="input-group">
 							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-phone"></span>
+								<span class="glyphicon glyphicon-send"></span>
 							</div>
-							<input type="text" name="phone" class="form-control" placeholder="请输入手机号" required minlength="11" maxlength="11">
+							<input type="text" id="email" class="form-control" placeholder="请输入邮箱" required>
 						</div>
 					</div>
 					<div class="form-group" style="margin-left:26px">
