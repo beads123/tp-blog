@@ -78,23 +78,3 @@ HTML;
 		sendMail($data['email'], '书香阁博客邮箱验证',$content);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

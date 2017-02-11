@@ -11,7 +11,7 @@ class IndexController extends CommonController{
 		//最新博客
 		$Recent=D('Blog')->getRecentBlog();
 
-		//最热博客
+		//本周热门博客
 		$Hot=D('Blog')->getHotBlog();
 		
 		$this->assign(array(

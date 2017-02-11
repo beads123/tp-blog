@@ -67,8 +67,17 @@ class BlogController extends CommonController{
 	 * @return [type] [description]
 	 */
 	public function detail(){
+		//博客内容
 		$blogData=D('Blog')->blogDetail(intval($_GET['id']));
-		$this->assign('blogData',$blogData);
+
+		//评论内容
+		$commentData=D('Comment')->getCommentsByBlogId(intval($_GET['id']));
+		
+		$this->assign(array(
+			'blogData'=>$blogData,
+			'commentData'=>$commentData
+			)
+		);
 	 	$this->showNavbar('博客详情');	
 	}
 

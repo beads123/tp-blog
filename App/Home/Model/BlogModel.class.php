@@ -92,7 +92,7 @@ HTML;
 	public function blogDetail($id){
 		$data = $this->field('a.*,b.username')->alias('a')
 				->join('LEFT JOIN blog_user b ON a.user_id=b.id')
-				->where(array('a.user_id'=>session('uid'),'a.id'=>$id))
+				->where(array('a.id'=>$id))
 				->find();
 		return $data;
 	}
@@ -147,23 +147,3 @@ HTML;
 		return $data;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

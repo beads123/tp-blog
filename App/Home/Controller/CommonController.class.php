@@ -13,9 +13,17 @@ class CommonController extends \Think\Controller{
 	 * @return void
 	 */
 	protected function showNavbar($title,$name=''){
+		//导航栏最新评论
+		$RecentComment=D('Comment')->getRecentComments();
+		//导航栏热门博客
+		$HotBlog=D('Blog')->getHotBlog();
+
 		$this->assign(array(
 			'title'=>$title,
-			'isLogin'=>session('isLogin')
+			'isLogin'=>session('isLogin'),
+			'uid'=>session('uid'),
+			'RecentComment'=>$RecentComment,
+			'HotBlog'=>$HotBlog
 		));
 		$this->display($name);
 	}

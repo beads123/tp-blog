@@ -186,37 +186,43 @@
 </div>
 <div id="search" class="sidebar-block search" role="search">
 	<h2 class="title"><strong>搜索</strong></h2>
-	<form class="navbar-form" action="search.php" method="post">
+	<form class="navbar-form">
 		<div class="input-group">
 			<input type="text" class="form-control" size="35" placeholder="请输入关键字">
 			<span class="input-group-btn">
 				<button class="btn btn-default btn-search" type="submit">搜索</button>
-			</span> </div>
-		</form>
-	</div>
+			</span> 
+		</div>
+	</form>
+</div>
 	<div class="sidebar-block recommend">
 		<h2 class="title"><strong>热门推荐</strong></h2>
 		<ul>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
-			<li><a target="_blank" href=""> <span class="thumb"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text">异清轩技术博客的SHORTCUT和ICON图标 ...</span> <span class="text-muted">阅读(2165)</span></a></li>
+			<?php if(is_array($HotBlog)): $i = 0; $__LIST__ = $HotBlog;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item1): $mod = ($i % 2 );++$i;?><li>
+					<a target="_blank" href="<?php echo U('Blog/detail',array('id'=>$item1['id']));?>">
+					<span class="thumb">
+					 	<img src="/Blog/Public/Home/images/img<?php echo ($key+1); ?>.jpg" alt="">
+					 </span> 
+					 <span class="text"><?php echo ($item1["title"]); ?></span> 
+					 <span class="text-muted">阅读(<?php echo ($item1["see"]); ?>)</span>
+					</a>
+				</li><?php endforeach; endif; else: echo "" ;endif; ?>
 		</ul>
 	</div>
 	<div class="sidebar-block comment">
 		<h2 class="title"><strong>最新评论</strong></h2>
 		<ul>
-			<li data-toggle="tooltip" data-placement="top" title="站长的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-		欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-		<li data-toggle="tooltip" data-placement="top" title="读者墙上的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-	欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-	<li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-<li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
-<li data-toggle="tooltip" data-placement="top" title="异清轩技术博客的SHORTCUT和ICON图标...的评论"><a target="_blank" href=""><span class="face"><img src="/Blog/Public/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>异清轩站长</strong> (2015-10-18) 说：<br />
-欢迎来到异清轩技术博客，在这里可以看到网站前端和后端的技术等 ...</span></a></li>
+			<?php if(is_array($RecentComment)): $i = 0; $__LIST__ = $RecentComment;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item2): $mod = ($i % 2 );++$i;?><li data-toggle="tooltip" data-placement="top">
+					<a href="<?php echo U('Blog/detail',array('id'=>$item2['blog_id']));?>" target="_blank">
+						<span class="face">
+							<img src="/Blog/Public/Home/images/icon/icon.png" alt="">
+						</span> 
+						<span class="text">
+							<strong><?php echo ($item2["username"]); ?></strong> (<?php echo ($item2["time"]); ?>) 说：<br />
+								<?php echo ($item2["content"]); ?>
+						</span>
+					</a>
+				</li><?php endforeach; endif; else: echo "" ;endif; ?>
 </ul>
 </div>
 </aside>
