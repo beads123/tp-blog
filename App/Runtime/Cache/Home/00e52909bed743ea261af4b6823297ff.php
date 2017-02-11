@@ -117,7 +117,7 @@
 </div>
 <div class="content-block new-content">
 	<h2 class="title"><strong>最新文章</strong></h2>
-	<div class="row">
+	<div class="row" id="RecentBlog">
 		<?php if(is_array($Recent)): $i = 0; $__LIST__ = $Recent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><div class="news-list">
 				<div class="news-img col-xs-5 col-sm-5 col-md-4"> 
 					<a target="_blank" href="<?php echo U('Blog/detail',array('id'=>$item['id']));?>">
@@ -133,10 +133,9 @@
 									<?php echo ($item["username"]); ?></a>
 							</span> 
 						    <span class="identity"></span> 
-							<span class="time"> <?= date('Y-m-d',$item['time'])?></span>
+							<span class="time"><?php echo ($item['time']); ?></span>
 						</dd>
-						<dd class="text"><?= mb_substr(strip_tags($item['content']),0,135,'utf-8').'......'?>
-						</dd>
+						<dd class="text"><?php echo ($item['content']); ?></dd>
 					</dl>
 					<div class="news_bot col-sm-7 col-md-8"> 
 						<span class="tags visible-lg visible-md">
@@ -151,17 +150,70 @@
 	</div>
 
 	<div class="news-more" id="pagination">
-		<a href="">查看更多</a>
+		<a href="javascript:void(0)" page='2' status='1'>查看更多</a>
 	</div>
-	<!--
-	<div class="quotes" style="margin-top:15px">
-		<span class="disabled">首页</span>
-		<span class="disabled">上一页</span>
-		<span class="current">1</span>
-		<a href="">2</a><a href="">下一页</a><a href="">尾页</a>
-	</div>
-    -->
 </div>
+<script type="text/javascript">
+	//ajax异步获取最新博客
+	$("#pagination a").on("click", function() {
+		//如果status为0，则表示没有数据了
+		if($(this).attr('status')==0)  return;
+
+		$(this).text('正在加载...');
+		//页数
+		var page=parseInt($(this).attr('page'));
+		$(this).attr('page',page+1);
+
+		$.get("<?php echo U('Index/index');?>",{'page':page},function(res){		
+			
+			var obj=$.parseJSON(res),
+				json=obj.data;
+
+			if(json!=null){			
+				var html='';
+				for (var i = 0; i <json.length; i++) {
+					var href="<?php echo U('Blog/detail/id/"+json[i].id+"');?>";
+					html+='<div class="news-list">'+
+				'<div class="news-img col-xs-5 col-sm-5 col-md-4">'+ 
+			'<a target="_blank" href="'+href+'">'+
+					   '<img src="/Blog/Public/Home/images/img'+(i%5+1)+'.jpg" '+
+					   'style="height:140px" alt="">'+
+					'</a></div>'+
+				'<div class="news-info col-xs-7 col-sm-7 col-md-8">'+
+					'<dl>'+
+					  '<dt><a href="'+href+'"'+
+					  'target="_blank" >'+json[i].title+'</a> </dt>'+
+					  '<dd>'+
+							'<span class="name">'+
+								'<a href="" title="由'+json[i].username+'发布" rel="author">'+
+									json[i].username+'</a>'+
+							'</span>'+
+						    '<span class="identity"></span>'+
+							'<span class="time">'+json[i].time+'</span>'+
+						'</dd>'+
+						'<dd class="text">'+json[i].content+'</dd>'+
+					'</dl>'+
+					'<div class="news_bot col-sm-7 col-md-8">'+
+						'<span class="tags visible-lg visible-md">'+
+						 '<a href="">本站</a>'+
+						 '<a href="">异清轩</a>'+
+						'</span>'+
+						'<span class="look"> 共 <strong>'+json[i].see+
+						'</strong> 人围观，发现'+
+						'</span>'+
+					'</div>'+
+				'</div>'+
+			'</div>';
+				};
+				$('#RecentBlog').append(html);
+				$('#pagination a').text('查看更多');
+			}else{
+				//没有数据则标记为0
+				$('#pagination a').attr('status','0').text('没有更多了...');
+			}
+		});	
+	});
+</script>
 	</div>
 </div>
 <!--/内容-->
@@ -265,7 +317,7 @@
 </div>
 </aside>
 <!--/右侧>992px显示-->
-<footer class="footer">POWERED BY &copy;<a href="http://www.ylsat.com">异清轩 YLSAT.COM</a> ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;<span><a href="http://www.miitbeian.gov.cn/" target="_blank">豫ICP备15026801号-1</a></span> <span style="display:none"><a href="">网站统计</a></span> </footer>
+<footer class="footer">POWERED BY &copy;<a href="http://www.ylsat.com">书香阁 lenshen.com </a> ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;<span><a href="http://www.lenshen.com/" target="_blank">赣ICP备15026801号</a></span> </footer>
 </section>
 <div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
 <!--/返回顶部-->

@@ -88,38 +88,6 @@ $(function() {
 	};
 	//启用页面元素智能定位
 	$("#search").smartFloat();
-	
-	//异步加载更多内容
-	$("#pagination a").on("click", function() {
-		var _url = $(this).attr("href");
-		var _text = $(this).text();
-		$(this).attr("href", "javascript:viod(0);");
-		$.ajax({
-			type: "POST",
-			url: _url,
-			success: function(data) {
-				//将返回的数据进行处理，挑选出class是news-list的内容块
-				result = $(data).find(".row .news-list");
-				//newHref获取返回的内容中的下一页的链接地址
-				nextHref = $(data).find("#pagination a").attr("href");
-				$(this).attr("href", _url);
-				if (nextHref != undefined) {
-					$("#pagination a").attr("href", nextHref);
-				} else {
-					$("#pagination a").html("下一页没有了").removeAttr("href")
-				}
-				// 渐显新内容
-				$(function() {
-					$(".row").append(result.fadeIn(300));
-					$("img").lazyload({
-						effect: "fadeIn"
-					});
-				});
-			}
-		});
-		return false;
-	});
-	
 
 	//登陆注册
 	$('.showModal').click(function(){

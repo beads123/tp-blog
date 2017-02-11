@@ -122,15 +122,20 @@ HTML;
 	}
 
 	/**
-	 * 最新博客，首页显示
+	 * 最新文章，首页显示
 	 * @return [type] [description]
 	 */
-	public function getRecentBlog(){
+	public function getRecentBlog($page){
 		$data = $this->field('a.*,b.username')->alias('a')
 				->join('LEFT JOIN blog_user b ON a.user_id=b.id')
 				->where(array('a.status'=>1))
 				->order('time desc')
+				->limit(($page-1)*5,5)
 				->select();
+		foreach ($data as $k => $v) {
+			$data[$k]['content']=mb_substr(strip_tags($v['content']),0,135,'utf-8').'......';
+			$data[$k]['time']=date('Y-m-d',$v['time']);
+		}
 		return $data;
 	}
 

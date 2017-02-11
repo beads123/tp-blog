@@ -255,7 +255,7 @@
 	<div class="sidebar-block recommend">
 		<h2 class="title"><strong>热门推荐</strong></h2>
 		<ul>
-			<?php if(is_array($Hot)): $i = 0; $__LIST__ = $Hot;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item1): $mod = ($i % 2 );++$i;?><li>
+			<?php if(is_array($HotBlog)): $i = 0; $__LIST__ = $HotBlog;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item1): $mod = ($i % 2 );++$i;?><li>
 					<a target="_blank" href="<?php echo U('Blog/detail',array('id'=>$item1['id']));?>">
 					<span class="thumb">
 					 	<img src="/Blog/Public/Home/images/img<?php echo ($key+1); ?>.jpg" alt="">
