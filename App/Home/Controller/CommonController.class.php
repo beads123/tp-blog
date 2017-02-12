@@ -16,7 +16,7 @@ class CommonController extends \Think\Controller{
 		//导航栏最新评论
 		$RecentComment=D('Comment')->getRecentComments();
 		//导航栏热门博客
-		$HotBlog=D('Blog')->getHotBlog();
+		$HotBlog=D('Blog')->getHotBlog();	
 
 		$this->assign(array(
 			'title'=>$title,

@@ -38,15 +38,15 @@
 				<div class="hidden-xs header"><!--超小屏幕不显示-->
 				<h1 class="logo"> <a href="<?php echo U('Index/index');?>" title="异清轩技术博客 - POWERED BY WY ALL RIGHTS RESERVED"></a> </h1>
 				<ul class="nav hidden-xs-nav">
-					<li class="active"><a href="<?php echo U('Index/index');?>"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
-					<li><a href="<?php echo U('Blog/index',array('type'=>'front'));?>"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
-					<li><a href="<?php echo U('Blog/index',array('type'=>'back'));?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
-					<li><a href="<?php echo U('Blog/fabu');?>"><span class="glyphicon glyphicon-pencil"></span>写博客</a></li>
-					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-signal"></span>关于我们</a></li>
+					<li class="active"><a href="/Blog/index"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
+					<li><a href="/Blog/front"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
+					<li><a href="/Blog/back"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
+					<li><a href="/Blog/fabu"><span class="glyphicon glyphicon-pencil"></span>写博客</a></li>
+					<li><a href="/Blog/about"><span class="glyphicon glyphicon-signal"></span>关于我们</a></li>
 					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
 					<?php else: ?>
-					<li><a href="<?php echo U('Blog/personal');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
-					<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
+					<li><a href="/Blog/my"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+					<li><a href="/Blog/logout"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
 				</ul>
 				<div class="feeds"> <a class="feed feed-xlweibo" href="" target="_blank"><i></i>新浪微博</a> <a class="feed feed-txweibo" href="" target="_blank"><i></i>腾讯微博</a> <a class="feed feed-rss" href="" target="_blank"><i></i>订阅本站</a> <a class="feed feed-weixin" data-toggle="popover" data-trigger="hover" title="微信扫一扫" data-html="true" data-content="<img src='images/weixin.jpg' alt=''>" href="javascript:;" target="_blank"><i></i>关注微信</a> </div>
 			</div>
@@ -57,14 +57,14 @@
 			</div>
 			<div id="header-xs-menu" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav header-xs-nav">
-					<li class="active"><a href="<?php echo U('Index/index');?>"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
-					<li><a href="<?php echo U('Blog/index',array('type'=>'front'));?>"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
-					<li><a href="<?php echo U('Blog/index',array('type'=>'back'));?>"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
-					<li><a href="<?php echo U('Index/about');?>"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
+					<li class="active"><a href="/Blog/index"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
+					<li><a href="/Blog/front"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
+					<li><a href="/Blog/back"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
+					<li><a href="/Blog/about"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
 					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
 					<?php else: ?>
-					<li><a href="<?php echo U('Blog/personal');?>"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
-					<li><a href="<?php echo U('User/logout');?>"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
+					<li><a href="/Blog/my"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+					<li><a href="/Blog/logout"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
 				</ul>
 				<form class="navbar-form" action="search.php" method="post" style="padding:0 25px;">
 					<div class="input-group">
@@ -87,14 +87,14 @@
 	<div class="row">
 	  <?php if($data): if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><div class="news-list">
 				<div class="news-img col-xs-5 col-sm-5 col-md-4">
-					 <a target="_blank" href="<?php echo U('detail',array('id'=>$item['id']));?>">
+					 <a target="_blank" href="/Blog/detail/<?php echo ($item['id']); ?>">
 					 	<img src="/Blog/Public/Home/images/img<?php echo ($key%5+1); ?>.jpg" alt=""> 
 					 </a> 
 				</div>
 				<div class="news-info col-xs-7 col-sm-7 col-md-8">
 					<dl>
 						<dt>
-							<a href="<?php echo U('detail',array('id'=>$item['id']));?>" target="_blank" >
+							<a href="/Blog/detail/<?php echo ($item['id']); ?>" target="_blank" >
 								<?php echo ($item["title"]); ?></a>
 					    </dt>
 						<dd>
@@ -223,7 +223,7 @@
 </div>
 </aside>
 <!--/右侧>992px显示-->
-<footer class="footer">POWERED BY &copy;<a href="http://www.ylsat.com">异清轩 YLSAT.COM</a> ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;<span><a href="http://www.miitbeian.gov.cn/" target="_blank">豫ICP备15026801号-1</a></span> <span style="display:none"><a href="">网站统计</a></span> </footer>
+<footer class="footer">POWERED BY &copy;<a href="http://www.ylsat.com">书香阁 lenshen.com </a> ALL RIGHTS RESERVED &nbsp;&nbsp;&nbsp;<span><a href="http://www.lenshen.com/" target="_blank">赣ICP备15026801号</a></span> </footer>
 </section>
 <div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
 <!--/返回顶部-->

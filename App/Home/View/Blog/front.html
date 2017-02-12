@@ -7,14 +7,14 @@
 		  <volist name="data" id="item">
 			<div class="news-list">
 				<div class="news-img col-xs-5 col-sm-5 col-md-4">
-					 <a target="_blank" href="{:U('detail',array('id'=>$item['id']))}">
+					 <a target="_blank" href="/Blog/detail/{$item['id']}">
 					 	<img src="__PUBLIC__/Home/images/img{$key%5+1}.jpg" alt=""> 
 					 </a> 
 				</div>
 				<div class="news-info col-xs-7 col-sm-7 col-md-8">
 					<dl>
 						<dt>
-							<a href="{:U('detail',array('id'=>$item['id']))}" target="_blank" >
+							<a href="/Blog/detail/{$item['id']}" target="_blank" >
 								{$item.title}</a>
 					    </dt>
 						<dd>

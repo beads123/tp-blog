@@ -7,21 +7,24 @@ namespace Home\Controller;
 class BlogController extends CommonController{
 
 	/**
-	 * 显示博客
+	 * 前端技术
+	 * @return [type] [description]
 	 */
-	public function index(){
-	 	if($_GET['type']=='front'){
-	 		$data=D('Blog')->getFront();
-	 		$this->assign('data',$data);
-	 		$this->showNavbar('前端技术','front');
-	 	}
-	 	elseif($_GET['type']=='back'){
-	 		$data=D('Blog')->getBack();
-	 		$this->assign('data',$data);
-	 		$this->showNavbar('后端技术','back');
-	 	}
+	public function front(){
+	 	$data=D('Blog')->getFront();
+	 	$this->assign('data',$data);
+	 	$this->showNavbar('前端技术');	
 	}
 
+	/**
+	 * 后端技术
+	 * @return [type] [description]
+	 */
+	public function back(){
+	 	$data=D('Blog')->getBack();
+	 	$this->assign('data',$data);
+	 	$this->showNavbar('后端技术');	
+	}	
 	/**
 	 * 发布博客
 	 * @return [type] [description]
