@@ -17,7 +17,8 @@ class UserController extends CommonController{
    				if($model->login()){			
    					echo json_encode(array(
 		   				'code'=>200,
-		   				'message'=>'登陆成功'
+		   				'message'=>'登陆成功',
+		   				'uid'=>session('uid')
    					));
    					return;
    				}		

@@ -41,7 +41,7 @@
 					<li class="active"><a href="/Blog/index"><span class="glyphicon glyphicon-home"></span>网站首页</a></li>
 					<li><a href="/Blog/front"><span class="glyphicon glyphicon-erase"></span>前端技术</a></li>
 					<li><a href="/Blog/back"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
-					<li><a href="/Blog/fabu"><span class="glyphicon glyphicon-pencil"></span>写博客</a></li>
+					<?php if($isLogin): ?><li><a href="/Blog/fabu"><span class="glyphicon glyphicon-pencil"></span>写博客</a></li><?php endif; ?>
 					<li><a href="/Blog/about"><span class="glyphicon glyphicon-signal"></span>关于我们</a></li>
 					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
 					<?php else: ?>
@@ -62,9 +62,9 @@
 					<li><a href="/Blog/back"><span class="glyphicon glyphicon-inbox"></span>后端技术</a></li>
 					<li><a href="/Blog/about"><span class="glyphicon glyphicon-user"></span>关于我们</a></li>
 					<?php if(!$isLogin): ?><li><a href="javascript:void(0)" class="showModal"><span class="glyphicon glyphicon-random"></span>注册|登陆</a></li>
-					<?php else: ?>
-					<li><a href="/Blog/my"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
-					<li><a href="/Blog/logout"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
+						<?php else: ?>
+						<li><a href="/Blog/my"><span class="glyphicon glyphicon-user"></span>我的博客</a></li>
+						<li><a href="/Blog/logout"><span class="glyphicon glyphicon-off"></span>退出</a></li><?php endif; ?>
 				</ul>
 				<form class="navbar-form" action="search.php" method="post" style="padding:0 25px;">
 					<div class="input-group">

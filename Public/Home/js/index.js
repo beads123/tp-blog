@@ -115,6 +115,11 @@ $(function() {
 				var result=$.parseJSON(res);
 				if(result.code==200){
 					$('#showError').text(result.message).removeClass('alert-warning').addClass('alert-success').show();
+					//如果是管理员
+					if(result.uid==1){
+						window.location.href=BLOG.adminUrl;
+						return;
+					}
 					setTimeout(function(){
 						location.reload();
 					},1000);				
