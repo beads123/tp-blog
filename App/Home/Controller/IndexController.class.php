@@ -1,6 +1,9 @@
 <?php
 namespace Home\Controller;
 
+/**
+ * 首页控制器
+ */
 class IndexController extends CommonController{
 
 	/**

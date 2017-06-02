@@ -1,13 +1,31 @@
-<layout name="layout/layout" />
-     <header class="news_header">
+<layout name="Layout/layout" />
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+      <header class="news_header">
         <h2>{$blogData.title}</h2>
         <ul>
           <li>{$blogData.username} 发布于 <?= date('Y-m-d',$blogData['time'])?></li>
           <li>类型：<a href="" title="" target="_blank">{$blogData.type}</a></li>
           <li>共 <strong>{$blogData.see}</strong> 人围观 </li>
+          <if condition="$uid eq $blogData['user_id']">
+            <li style="text-decoration: underline;cursor: pointer;" id="edit">编辑</li>
+          </if>
         </ul>
       </header>
       <article class="news_content">{$blogData.content}</article>
+
+      <!-- 点击编辑后下面的表单显示 -->
+      <form class="form-horizontal hide" id="edit_blog">
+        <textarea id="content" required>{$blogData.content}</textarea><br/>
+        <input type="text" id="title" required class="form-control" placeholder="博客标题,必填" value="{$blogData.title}"/><br/>
+        <input type="text" id="type" required class="form-control" placeholder="博客分类,必填,例如php,mysql,js。只能写一种" value="{$blogData.type}" />
+        <br/>
+        <div class="container">
+         <button type="submit" id="blog-btn" blogId="{$blogData.id}" style="margin:12px" class="btn btn-info">保存博客</button>
+        </div>
+      </form>
+
       <div class="zambia">
       	<a href="javascript:void(0);" id="zan" blogId="{$blogData.id}" status="1">
       		<span class="glyphicon glyphicon-thumbs-up"></span>
@@ -23,7 +41,7 @@
             <div class="comment-form-footer">
               <div class="comment-form-text">{$isLogin?'请文明发言!':'请登陆后评论!'}</div>
               <div class="comment-form-btn">
-                <button type="button" id="comment-btn" status="{$isLogin?1:0}" class="btn btn-default btn-comment">提交评论</button>
+                <button type="button" id="comment-btn" status="{$isLogin?1:0}" class="btn btn-default btn-comment" username="{$username}">提交评论</button>
               </div>
             </div>
           </div>
@@ -47,6 +65,39 @@
 
       <script type="text/javascript">
   		(function(){
+        UE.getEditor('content',{
+          'initialFrameWidth':'100%',
+          'initialFrameHeight':300,
+        });
+
+        //编辑博客
+        $("#edit").click(function(){
+            var $edit_blog=$("#edit_blog");
+            $edit_blog.removeClass('hide').prev().hide();
+        })
+        
+        //保存博客
+        $('#blog-btn').click(function() {
+            //可发送
+            $(this).text('保存中...').get(0).disabled=true;
+            var data={
+              'id':$(this).attr('blogId'),
+              'title':$('#title').val(),
+              'content':$('#content').val(),
+              'type':$('#type').val()
+            };
+            $.post(BLOG.editUrl,data,function(res){
+              var result=$.parseJSON(res);
+              if(result.code==200||result.code==500){
+                  var $edit_blog=$("#edit_blog");
+                  $edit_blog.addClass('hide').prev().html(data.content).show();
+                  $("#edit").parent().prev().html(data.title);
+                  $("#edit").prev().prev().find('a').html(data.type);
+                  $('#blog-btn').text('编辑博客').get(0).disabled=false;
+                  $("body,html").animate({scrollTop:0},300);
+              }
+            });
+        });
 
   			//赞
   			$('#zan').click(function(event) {
@@ -83,6 +134,8 @@
                   'content':$('#commentContent').val(),
                   'blogId':$('#zan').attr('blogId')
                };
+               var username=$(this).attr('username');
+               var content=data.content;
                var _this=this;
                $.post("{:U('Comment/comment')}",data, function(res) {
                     var result=$.parseJSON(res);
@@ -90,7 +143,7 @@
                        $(_this).parent().prev().text(result.message).css('color','green');
                        var resData=result.data,
                            html='';
-                       html+='<li><span class="face"><img src="__PUBLIC__/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>'+resData.username+'</strong> ('+resData.time+') 说：<br />'+resData.content+'</span></li>';
+                       html+='<li><span class="face"><img src="__PUBLIC__/Home/images/icon/icon.png" alt=""></span> <span class="text"><strong>'+username+'</strong> ('+resData.time+') 说：<br />'+content+'</span></li>';
                       $('#firstComment').after(html);
                     }else{
                       $(_this).parent().prev().text(result.message).css('color','red');

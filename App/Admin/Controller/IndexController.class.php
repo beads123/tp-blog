@@ -97,5 +97,19 @@ class IndexController extends Controller{
 		    echo $bool;    	
 		}		
 	}
+
+   /**
+	 * ajax修改用户邮箱
+	 */
+	public function editEmail(){
+		if(IS_AJAX){
+			$data=array(
+				'id'=>I('post.id'),
+				'email'=>I('post.email')
+			);
+			$bool=M('user')->save($data);
+		    echo $bool;    	
+		}			
+	}
 }
 

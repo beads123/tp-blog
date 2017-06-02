@@ -7,14 +7,14 @@ return array(
 	'DEFAULT_MODULE'=>'Home',
 
 	//数据库配置
-	'DB_TYPE'=>'mysql',
+	'DB_TYPE'=>'mysqli',
 	'DB_HOST'=>'localhost',
 	'DB_PORT'=>'3306',
 	'DB_USER'=>'root',
 	'DB_PWD'=>'',
-	'DB_NAME'=>'blog',
+	'DB_NAME'=>'web',
 	'DB_PREFIX'=>'blog_',
-
+	
 	//URL模式
 	'URL_MODEL'=>2,   //url重写模式
 
@@ -25,10 +25,9 @@ return array(
 	'MD5_KEY' => 'blog.lenshen.com',
 
 	/************** 发邮件的配置 ***************/
-
-	'MAIL_ADDRESS' => 'm18296764976_1@163.com',   // 发货人的email
+	'MAIL_ADDRESS' => '986992484@qq.com',   // 发件人的email
 	'MAIL_FROM' => '书香阁博客',      // 发货人姓名
-	'MAIL_SMTP' => 'smtp.163.com',      // 邮件服务器的地址
-	'MAIL_LOGINNAME' => 'm18296764976_1',   
-	'MAIL_PASSWORD' => 'kiss12345'
+	'MAIL_SMTP' => 'smtp.qq.com',      // 邮件服务器的地址
+	'MAIL_LOGINNAME' => '986992484@qq.com',   
+	'MAIL_PASSWORD' => 'xwopvmkrgoyqbcdf'
 );

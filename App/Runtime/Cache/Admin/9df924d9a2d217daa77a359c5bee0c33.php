@@ -9,20 +9,20 @@
 		<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 		<!-- ================== BEGIN BASE CSS STYLE ================== -->
 		<!--link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" /-->
-		<link href="/Blog/Public/Admin/plugins/jquery-ui-1.10.4/jquery-ui.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/plugins/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/plugins/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/css/animate.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/css/style.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/css/style-responsive.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/plugins/jquery-ui-1.10.4/jquery-ui.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/plugins/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/plugins/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/css/animate.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/css/style.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/css/style-responsive.css" rel="stylesheet" />
 		<!-- ================== END BASE CSS STYLE ================== -->
-		<script src="/Blog/Public/Admin/js/behavior.js"></script>
-		<script src="/Blog/Public/Admin/js/ga.js"></script>
+		<script src="/blog/Public/Admin/js/behavior.js"></script>
+		<script src="/blog/Public/Admin/js/ga.js"></script>
 		<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-		<link href="/Blog/Public/Admin/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
-		<link href="/Blog/Public/Admin/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+		<link href="/blog/Public/Admin/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
 		<!-- ================== END PAGE LEVEL STYLE ================== -->
 		<style type="text/css">
 			dl dd{padding: 5px;font-family: '微软雅黑';font-size: 16px}
@@ -63,7 +63,7 @@
 				</li>
 				<li class="dropdown navbar-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="/Blog/Public/Admin/img/user-11.jpg" alt="" />
+						<img src="/blog/Public/Admin/img/user-11.jpg" alt="" />
 					</a>
 				</li>
 			</ul>
@@ -81,7 +81,7 @@
 			<ul class="nav">
 				<li class="nav-profile">
 					<div class="image">
-						<a href="javascript:;"><img src="/Blog/Public/Admin/img/user-11.jpg" alt="" /></a>
+						<a href="javascript:;"><img src="/blog/Public/Admin/img/user-11.jpg" alt="" /></a>
 					</div>
 					<div class="info">
 						欢迎您,管理员
@@ -240,20 +240,20 @@
 		<!-- end scroll to top btn -->
 	</div>
 	<!-- end page container -->
-	<script src="/Blog/Public/Admin/plugins/jquery-1.7.2/jquery-1.7.2.js"></script>
-	<script src="/Blog/Public/Admin/plugins/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/bootstrap-3.1.1/js/bootstrap.min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/flot/jquery.flot.min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/flot/jquery.flot.time.min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/flot/jquery.flot.resize.min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/flot/jquery.flot.pie.min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/sparkline/jquery.sparkline.js"></script>
-	<script src="/Blog/Public/Admin/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2-min.js"></script>
-	<script src="/Blog/Public/Admin/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="/Blog/Public/Admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script src="/Blog/Public/Admin/js/dashboard.js"></script>
-	<script src="/Blog/Public/Admin/js/apps.js"></script>
+	<script src="/blog/Public/Admin/plugins/jquery-1.7.2/jquery-1.7.2.js"></script>
+	<script src="/blog/Public/Admin/plugins/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js"></script>
+	<script src="/blog/Public/Admin/plugins/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+	<script src="/blog/Public/Admin/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/blog/Public/Admin/plugins/flot/jquery.flot.min.js"></script>
+	<script src="/blog/Public/Admin/plugins/flot/jquery.flot.time.min.js"></script>
+	<script src="/blog/Public/Admin/plugins/flot/jquery.flot.resize.min.js"></script>
+	<script src="/blog/Public/Admin/plugins/flot/jquery.flot.pie.min.js"></script>
+	<script src="/blog/Public/Admin/plugins/sparkline/jquery.sparkline.js"></script>
+	<script src="/blog/Public/Admin/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2-min.js"></script>
+	<script src="/blog/Public/Admin/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="/blog/Public/Admin/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/blog/Public/Admin/js/dashboard.js"></script>
+	<script src="/blog/Public/Admin/js/apps.js"></script>
 	<script>
 		$(document).ready(function() {
 			App.init();

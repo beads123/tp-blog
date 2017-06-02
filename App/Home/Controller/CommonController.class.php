@@ -22,6 +22,7 @@ class CommonController extends \Think\Controller{
 			'title'=>$title,
 			'isLogin'=>session('isLogin'),
 			'uid'=>session('uid'),
+			'username'=>session('username'),
 			'RecentComment'=>$RecentComment,
 			'HotBlog'=>$HotBlog
 		));

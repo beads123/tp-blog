@@ -77,6 +77,7 @@ class UserController extends CommonController{
 	 */
 	public function logout(){
 		session('uid', null);
+		session('username',null);
 		session('isLogin',null);
 		$this->redirect('Home/Index/index');
 	}

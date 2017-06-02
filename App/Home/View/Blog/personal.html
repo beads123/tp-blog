@@ -1,4 +1,4 @@
-<layout name="layout/layout" />
+<layout name="Layout/layout" />
 
 <div class="content-block new-content">
 	<P class="alert alert-info">温馨提示：未通过审核的博客仅自己可见!</p>
@@ -8,7 +8,7 @@
 		  <volist name="data" id="item">
 			<div class="news-list">
 				<div class="news-img col-xs-5 col-sm-5 col-md-4">
-					 <a target="_blank" href="{:U('detail',array('id'=>$item['id']))}">
+					 <a target="_blank" href="detail/{$item['id']}">
 					 	<img src="__PUBLIC__/Home/images/img{$key%5+1}.jpg" alt=""> 
 					 </a> 
 				</div>
@@ -17,7 +17,7 @@
 						<dt>
 							<div class="row">
 							<div class="col-sm-9">
-								<a href="{:U('detail',array('id'=>$item['id']))}" target="_blank" >
+								<a href="detail/{$item['id']}" target="_blank" >
 								{$item.title}</a>
 							</div> 
 							<div class="col-sm-3">

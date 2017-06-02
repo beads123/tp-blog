@@ -1,4 +1,4 @@
-﻿<layout name="layout/layout" />
+﻿<layout name="Layout/layout" />
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"> <!--banner-->
 	<ol class="carousel-indicators">
@@ -26,7 +26,7 @@
 	<ul>
 		<volist name="Hot" id="item1">		
 			<li class="{$key==0?'large':''}">
-				<a href="{:U('Blog/detail',array('id'=>$item1['id']))}" target="_blank">
+				<a href="/blog/detail/{:$item1['id']}" target="_blank">
 					<img src="__PUBLIC__/Home/images/img{$key+1}.jpg" alt="">
 					<h3>{$item1.title}</h3>
 				</a>
@@ -41,13 +41,13 @@
 		<volist name="Recent" id="item">
 			<div class="news-list">
 				<div class="news-img col-xs-5 col-sm-5 col-md-4"> 
-					<a target="_blank" href="{:U('Blog/detail',array('id'=>$item['id']))}">
+					<a target="_blank" href="/blog/detail/{:$item['id']}">
 					   <img src="__PUBLIC__/Home/images/img{$key%5+1}.jpg" style="height:140px" alt=""> 
 					</a>  
 				</div>
 				<div class="news-info col-xs-7 col-sm-7 col-md-8">
 					<dl>
-						<dt> <a href="{:U('Blog/detail',array('id'=>$item['id']))}" target="_blank" >{$item.title}</a> </dt>
+						<dt> <a href="/blog/detail/{:$item['id']}" target="_blank" >{$item.title}</a> </dt>
 						<dd>
 							<span class="name">
 								<a href="" title="由{$item.username}发布" rel="author">
@@ -94,7 +94,7 @@
 			if(json!=null){			
 				var html='';
 				for (var i = 0; i <json.length; i++) {
-					var href="{:U('Blog/detail/id/"+json[i].id+"')}";
+					var href="/blog/detail/"+json[i].id;
 					html+='<div class="news-list">'+
 				'<div class="news-img col-xs-5 col-sm-5 col-md-4">'+ 
 			'<a target="_blank" href="'+href+'">'+

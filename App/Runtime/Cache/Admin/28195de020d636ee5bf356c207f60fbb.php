@@ -8,17 +8,17 @@
     <title>书香阁-后台管理</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="/Blog/Public/Admin/plugins/jquery-ui-1.10.4/jquery-ui.css" rel="stylesheet" />
-    <link href="/Blog/Public/Admin/plugins/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet" />
-    <link href="/Blog/Public/Admin/plugins/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/Blog/Public/Admin/css/animate.css" rel="stylesheet" />
-    <link href="/Blog/Public/Admin/css/style.css" rel="stylesheet" />
-    <link href="/Blog/Public/Admin/css/style-responsive.css" rel="stylesheet" />
+    <link href="/blog/Public/Admin/plugins/jquery-ui-1.10.4/jquery-ui.css" rel="stylesheet" />
+    <link href="/blog/Public/Admin/plugins/bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet" />
+    <link href="/blog/Public/Admin/plugins/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/blog/Public/Admin/css/animate.css" rel="stylesheet" />
+    <link href="/blog/Public/Admin/css/style.css" rel="stylesheet" />
+    <link href="/blog/Public/Admin/css/style-responsive.css" rel="stylesheet" />
     <!-- ================== END BASE CSS STYLE ================== -->
     
     <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
-    <link href="/Blog/Public/Admin/plugins/DataTables-1.9.4/css/jQuery.dateTables.css" rel="stylesheet" />
-    <script src="/Blog/Public/Admin/plugins/jquery-1.7.2/jquery-1.7.2.js"></script>
+    <link href="/blog/Public/Admin/plugins/DataTables-1.9.4/css/jQuery.dateTables.css" rel="stylesheet" />
+    <script src="/blog/Public/Admin/plugins/jquery-1.7.2/jquery-1.7.2.js"></script>
     <!-- ================== END PAGE LEVEL STYLE ================== -->
 </head>
 <body>
@@ -55,7 +55,7 @@
 				</li>
 				<li class="dropdown navbar-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="/Blog/Public/Admin/img/user-11.jpg" alt="" />
+						<img src="/blog/Public/Admin/img/user-11.jpg" alt="" />
 					</a>
 				</li>
 			</ul>
@@ -73,7 +73,7 @@
 			<ul class="nav">
 				<li class="nav-profile">
 					<div class="image">
-						<a href="javascript:;"><img src="/Blog/Public/Admin/img/user-11.jpg" alt="" /></a>
+						<a href="javascript:;"><img src="/blog/Public/Admin/img/user-11.jpg" alt="" /></a>
 					</div>
 					<div class="info">
 						欢迎您,管理员
@@ -180,19 +180,19 @@
     </div>
     <!-- end page container -->
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="/Blog/Public/Admin/plugins/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js"></script>
-    <script src="/Blog/Public/Admin/plugins/bootstrap-3.1.1/js/bootstrap.min.js"></script>
-    <script src="/Blog/Public/Admin/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/blog/Public/Admin/plugins/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js"></script>
+    <script src="/blog/Public/Admin/plugins/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="/blog/Public/Admin/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <!--[if lt IE 9]>
-        <script src="/Blog/Public/Admin/crossbrowserjs/html5shiv.js"></script>
-        <script src="/Blog/Public/Admin/crossbrowserjs/respond.min.js"></script>
-        <script src="/Blog/Public/Admin/crossbrowserjs/excanvas.min.js"></script>
+        <script src="/blog/Public/Admin/crossbrowserjs/html5shiv.js"></script>
+        <script src="/blog/Public/Admin/crossbrowserjs/respond.min.js"></script>
+        <script src="/blog/Public/Admin/crossbrowserjs/excanvas.min.js"></script>
     <![endif]-->
     <!-- ================== END BASE JS ================== -->
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="/Blog/Public/Admin/plugins/DataTables-1.9.4/js/jquery.dataTables.js"></script>
-    <script src="/Blog/Public/Admin/plugins/DataTables-1.9.4/js/data-table.js"></script>
-    <script src="/Blog/Public/Admin/js/apps.js"></script>
+    <script src="/blog/Public/Admin/plugins/DataTables-1.9.4/js/jquery.dataTables.js"></script>
+    <script src="/blog/Public/Admin/plugins/DataTables-1.9.4/js/data-table.js"></script>
+    <script src="/blog/Public/Admin/js/apps.js"></script>
     <!-- ================== END PAGE LEVEL JS ================== -->
     <script>
         $(document).ready(function() {

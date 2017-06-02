@@ -33,6 +33,8 @@ function sendMail($to, $title, $content)
     // 是否需要身份验证
     $mail->SMTPAuth=TRUE;
     $mail->CharSet='UTF-8';
+    $mail->SMTPSecure = 'ssl';
+    $mail->Hostname = 'http://www.lenshen.com';
     /*  邮件服务器上的账号是什么 */
     $mail->From=C('MAIL_ADDRESS');
     $mail->FromName=C('MAIL_FROM');
@@ -40,7 +42,7 @@ function sendMail($to, $title, $content)
     $mail->Username=C('MAIL_LOGINNAME');
     $mail->Password=C('MAIL_PASSWORD');
     // 发邮件端口号默认25
-    $mail->Port = 25;
+    $mail->Port = 465;
     // 收件人
     $mail->AddAddress($to);
     // 邮件标题

@@ -7,7 +7,7 @@ namespace Home\Controller;
 class BlogController extends CommonController{
 
 	/**
-	 * 前端技术
+	 * 前端博客
 	 * @return [type] [description]
 	 */
 	public function front(){
@@ -17,7 +17,7 @@ class BlogController extends CommonController{
 	}
 
 	/**
-	 * 后端技术
+	 * 后端博客
 	 * @return [type] [description]
 	 */
 	public function back(){
@@ -25,6 +25,7 @@ class BlogController extends CommonController{
 	 	$this->assign('data',$data);
 	 	$this->showNavbar('后端技术');	
 	}	
+	
 	/**
 	 * 发布博客
 	 * @return [type] [description]
@@ -54,6 +55,36 @@ class BlogController extends CommonController{
    			return;
    		}
 		$this->showNavbar('写博客');
+	}
+
+	/**
+	 * 编辑博客
+	 * @return [type] [description]
+	 */
+	public function edit(){
+	  	if(IS_AJAX){
+   			$model = D('Blog');
+   			if($model->create($_POST,3)){
+   				if($model->save()){
+   					echo json_encode(array(
+   						'code'=>200,
+   						'message'=>'博客编辑成功'
+   					));
+   					return;
+   				}else{
+   					echo json_encode(array(
+   						'code'=>500,
+   						'message'=>$model->getError()
+   					));		
+   					return;
+   				}
+   			}
+   			echo json_encode(array(
+   				'code'=>400,
+   				'message'=>$model->getError()
+   			));
+   			return;
+   		}
 	}
 
 	/**

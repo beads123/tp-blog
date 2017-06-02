@@ -1,4 +1,7 @@
 <?php
+/**
+ * 博客模型
+ */
 namespace Home\Model;
 use Think\Model;
 class BlogModel extends Model {

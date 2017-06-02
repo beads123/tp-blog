@@ -13,7 +13,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 html, body {
 	color: #444;
 	background-color: #EEE;
-	overflow: auto !important
+}
+html{
+	overflow-y: scroll !important;
 }
 body::-webkit-scrollbar {
  width:8px;

@@ -132,6 +132,7 @@
             App.init();
 
             $('.btn-info').click(function() {
+               $("body,html").animate({scrollTop:$('.panel').height()+70},1500);
                var id=$(this).attr('data-id');
                $.post("{:U('Index/blog')}",{'id':id},function(res){
                    var result=$.parseJSON(res);

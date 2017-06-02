@@ -1,4 +1,7 @@
 <?php
+/**
+ * 博客评论模型
+ */
 namespace Home\Model;
 use Think\Model;
 class CommentModel extends Model {
@@ -24,9 +27,8 @@ class CommentModel extends Model {
 	 * @return [type] [description]
 	 */
 	public function getData($id){
-		$data=$this->field('a.content,a.time,b.username')
-				   ->alias('a')
-				   ->join('LEFT JOIN blog_user b ON a.user_id= b.id and a.id='.$id)
+		$data=$this->field('time')
+				   ->where('id='.$id)
 				   ->find();
 		$data['time']=date('Y-m-d',$data['time']);  //更换时间格式
 	    return $data;

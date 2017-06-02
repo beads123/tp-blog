@@ -1,4 +1,7 @@
 <?php
+/**
+ * 用户模型
+ */
 namespace Home\Model;
 use Think\Model;
 class UserModel extends Model {
@@ -34,6 +37,7 @@ class UserModel extends Model {
 				if($user['password'] == md5($password . C('MD5_KEY'))){
 					//生成session
 					session('uid', $user['id']);
+					session('username',$user['username']);
 					session('isLogin',true);
 					return TRUE;
 				}

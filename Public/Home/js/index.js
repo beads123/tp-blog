@@ -4,27 +4,27 @@ $(function() {
 	$('body').show();
 	$('.version').text(NProgress.version);
 	NProgress.start();
-	window.onload=function(){
+	window.onload = function() {
 		NProgress.done();
 		$('.fade').removeClass('out');
 	}
 
 	//时间提示
-	function GetTime(){
-		var d=new Date();
+	function GetTime() {
+		var d = new Date();
 
-		this.year=d.getFullYear();
-		this.month=(function(d){
-			return (d.getMonth()==12)? 1:d.getMonth()+1
+		this.year = d.getFullYear();
+		this.month = (function(d) {
+			return (d.getMonth() == 12) ? 1 : d.getMonth() + 1
 		})(d);
-		this.date=d.getDate();
-		this.weekday=(function(d){
-			var day=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+		this.date = d.getDate();
+		this.weekday = (function(d) {
+			var day = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
 			return day[d.getDay()];
 		})(d);
 	}
-	var time=new GetTime();
-	$('#time').text(time.year+'年'+time.month+'月'+time.date+'日	'+time.weekday);
+	var time = new GetTime();
+	$('#time').text(time.year + '年' + time.month + '月' + time.date + '日	' + time.weekday);
 
 	//滚动条的淡入淡出
 	$(window).scroll(function() {
@@ -90,65 +90,65 @@ $(function() {
 	$("#search").smartFloat();
 
 	//登陆注册
-	$('.showModal').click(function(){
+	$('.showModal').click(function() {
 		$('#myModal').modal('show');
+		$('body.modal-open').css({
+			'paddingRight': 0
+		});
 	});
 	//登录注册按钮切换
-	$('#change').click(function(){
-		if($(this).attr('status')=='login'){
-			$(this).text('已有账号?立即登录').attr('status','reg').parent().prev().show();
-			$(this).prev('button').attr('status','reg').text('注册');
-		}else{
-			$(this).text('还没账号?立即注册').attr('status','login').parent().prev().hide();
-			$(this).prev('button').attr('status','login').text('登录');	
-		}	
+	$('#change').click(function() {
+		if ($(this).attr('status') == 'login') {
+			$(this).text('已有账号?立即登录').attr('status', 'reg').parent().prev().show();
+			$(this).prev('button').attr('status', 'reg').text('注册');
+		} else {
+			$(this).text('还没账号?立即注册').attr('status', 'login').parent().prev().hide();
+			$(this).prev('button').attr('status', 'login').text('登录');
+		}
 	});
 	$('#btn').click(function(event) {
 		//登陆验证
-		if($(this).attr('status')=='login'){
-			$(this).text('登陆中...').get(0).disabled=true;
-		    var data={
-				'username':$('#username').val(),
-				'password':$('#password').val(),
+		if ($(this).attr('status') == 'login') {
+			$(this).text('登陆中...').get(0).disabled = true;
+			var data = {
+				'username': $('#username').val(),
+				'password': $('#password').val(),
 			};
-			$.post(BLOG.loginUrl,data,function(res){
-				var result=$.parseJSON(res);
-				if(result.code==200){
+			$.post(BLOG.loginUrl, data, function(res) {
+				var result = $.parseJSON(res);
+				if (result.code == 200) {
 					$('#showError').text(result.message).removeClass('alert-warning').addClass('alert-success').show();
 					//如果是管理员
-					if(result.uid==1){
-						window.location.href=BLOG.adminUrl;
+					if (result.uid == 1) {
+						window.location.href = BLOG.adminUrl;
 						return;
 					}
-					setTimeout(function(){
+					setTimeout(function() {
 						location.reload();
-					},1000);				
-				}else{
+					}, 1000);
+				} else {
 					$('#showError').text(result.message).removeClass('alert-success').addClass('alert-warning').show();
 				}
-				$('#btn').text('登陆').get(0).disabled=false;
+				$('#btn').text('登陆').get(0).disabled = false;
 			});
 
-		}else{ 
-		    //注册验证
-		    $(this).text('注册中...').get(0).disabled=true;
-			var data={
-				'username':$('#username').val(),
-				'password':$('#password').val(),
-				'email':$('#email').val()
+		} else {
+			//注册验证
+			$(this).text('注册中...').get(0).disabled = true;
+			var data = {
+				'username': $('#username').val(),
+				'password': $('#password').val(),
+				'email': $('#email').val()
 			};
-			$.post(BLOG.regUrl,data,function(res){
-			    var result=$.parseJSON(res);
-				if(result.code==200){
+			$.post(BLOG.regUrl, data, function(res) {
+				var result = $.parseJSON(res);
+				if (result.code == 200) {
 					$('#showError').text(result.message).removeClass('alert-warning').addClass('alert-success').show();
-				}else{
+				} else {
 					$('#showError').text(result.message).removeClass('alert-success').addClass('alert-warning').show();
 				}
-				$('#btn').text('注册').get(0).disabled=false;
+				$('#btn').text('注册').get(0).disabled = false;
 			});
 		}
 	});
-
-
-
 });
